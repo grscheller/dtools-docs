@@ -1,13 +1,13 @@
 # Developer Tools
 
-Python project of packages to add in general software development.
+Python project of packages to aid in general software development.
 
 These Python developer tools consist of Python PyPI namespace packages all
 under the **dtools.** "namespace."
 
-* dtools.circular-array - indexable double sided circular array 
-* dtools.datastructures - data structures geared to algorithms
-* dtools.fp - pythonic functional programming tools
+* dtools.circular-array - Indexable double sided circular array 
+* dtools.datastructures - Data structures geared to algorithms
+* dtools.fp - Pythonic functional programming tools
 
 The purpose of this collection of PyPI namespace projects is to host
 and provide infrastructure for my Python developer tools.
@@ -22,7 +22,7 @@ Detailed documentation for the developer tools project can he found
 GitHub source code subpackage repos:
 
 * [dtools.circular-array](https://github.com/grscheller/dtools-circular-array)
-* [dtools.datastructures](https://github.com/grscheller/dtools-datastructure)
+* [dtools.datastructures](https://github.com/grscheller/dtools-datastructures)
 * [dtools.fp](https://github.com/grscheller/dtools-fp)
 
 ## Documentation Generation
