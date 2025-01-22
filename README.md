@@ -5,7 +5,7 @@ Python project of packages to aid in general software development.
 These Python developer tools consist of Python PyPI namespace packages all
 under the **dtools.** "namespace."
 
-* dtools.circular-array - Indexable double sided circular array 
+* dtools.circular-array - An indexable double sided circular array 
 * dtools.datastructures - Data structures geared to algorithms
 * dtools.fp - Pythonic functional programming tools
 
