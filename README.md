@@ -2,12 +2,12 @@
 
 Python project of packages to aid in general software development.
 
-These Python developer tools consist of Python PyPI namespace packages all
-under the **dtools.** "namespace."
+These Python developer libraries consist of Python PyPI namespace
+packages all under the **dtools.** "namespace."
 
-* dtools.circular-array - An indexable double sided circular array 
-* dtools.datastructures - Data structures geared to algorithms
-* dtools.fp - Pythonic functional programming tools
+* circular-array - An indexable double sided circular array 
+* datastructures - Data structures geared to algorithms
+* fp - Pythonic functional programming tools
 
 The purpose of this collection of PyPI namespace projects is to host
 and provide infrastructure for my Python developer tools.
@@ -17,13 +17,21 @@ and provide infrastructure for my Python developer tools.
 Detailed documentation for the developer tools project can he found
 [here](https://grscheller.github.io/dtools-docs/).
 
+## PyPI
+
+Projects on PyPi:
+
+* [dtools.circular-array](https://pypi.org/project/grscheller.circular-array/)
+* [dtools.datastructures](https://pypi.org/project/dtools.datastructures/)
+* [dtools.fp](https://pypi.org/project/grscheller.fp/)
+
 ## Source Code
 
-GitHub source code subpackage repos:
+GitHub source code repos:
 
-* [dtools.circular-array](https://github.com/grscheller/dtools-circular-array)
-* [dtools.datastructures](https://github.com/grscheller/dtools-datastructures)
-* [dtools.fp](https://github.com/grscheller/dtools-fp)
+* [dtools-circular-array](https://github.com/grscheller/dtools-circular-array/)
+* [dtools-datastructures](https://github.com/grscheller/dtools-datastructures/)
+* [dtools-fp](https://github.com/grscheller/dtools-fp/)
 
 ## Documentation Generation
 
