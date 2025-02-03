@@ -39,7 +39,7 @@ Using the dtools.fp project as an example, here is how one generates the
 docs with [pdoc](https://pypi.org/project/pdoc/).
 
 ```bash
-   $ cd docs/integer_math/API/development/
+   $ cd docs/fp/API/development/
    $ rm -r bm/ index.html search.js
    $ PYTHONPATH=:~/devel/pypi/dtools/dtools-fp/src
    $ pdoc -o . dtools.fp
