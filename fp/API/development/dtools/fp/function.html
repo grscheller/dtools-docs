@@ -118,7 +118,7 @@ and application.</p>
 </span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>
 </span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;swap&#39;</span><span class="p">,</span> <span class="s1">&#39;sequenced&#39;</span><span class="p">,</span> <span class="s1">&#39;partial&#39;</span><span class="p">,</span> <span class="s1">&#39;iter_args&#39;</span><span class="p">,</span> <span class="s1">&#39;negate&#39;</span><span class="p">]</span>
 </span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a>
-</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="n">A</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="n">A</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>  <span class="c1"># Not needed for mypy, hint for pdoc.</span>
 </span><span id="L-38"><a href="#L-38"><span class="linenos">38</span></a><span class="n">R</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;R&#39;</span><span class="p">)</span>
 </span><span id="L-39"><a href="#L-39"><span class="linenos">39</span></a><span class="n">U</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;U&#39;</span><span class="p">)</span>
 </span><span id="L-40"><a href="#L-40"><span class="linenos">40</span></a><span class="n">V</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;V&#39;</span><span class="p">)</span>
@@ -160,7 +160,7 @@ and application.</p>
 </span><span id="L-76"><a href="#L-76"><span class="linenos">76</span></a>
 </span><span id="L-77"><a href="#L-77"><span class="linenos">77</span></a>
 </span><span id="L-78"><a href="#L-78"><span class="linenos">78</span></a><span class="k">def</span><span class="w"> </span><span class="nf">iter_args</span><span class="p">[</span><span class="n">A</span><span class="p">](</span><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">A</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">A</span><span class="p">]:</span>
-</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Function returning an iterators of its arguments.</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos">79</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Function returning an iterator of its arguments.</span>
 </span><span id="L-80"><a href="#L-80"><span class="linenos">80</span></a>
 </span><span id="L-81"><a href="#L-81"><span class="linenos">81</span></a><span class="sd">    * useful for API&#39;s with single iterable constructors</span>
 </span><span id="L-82"><a href="#L-82"><span class="linenos">82</span></a>
@@ -283,7 +283,7 @@ a sequence of the original arguments.</p>
     </div>
     <a class="headerlink" href="#iter_args"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="iter_args-79"><a href="#iter_args-79"><span class="linenos">79</span></a><span class="k">def</span><span class="w"> </span><span class="nf">iter_args</span><span class="p">[</span><span class="n">A</span><span class="p">](</span><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">A</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">A</span><span class="p">]:</span>
-</span><span id="iter_args-80"><a href="#iter_args-80"><span class="linenos">80</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Function returning an iterators of its arguments.</span>
+</span><span id="iter_args-80"><a href="#iter_args-80"><span class="linenos">80</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Function returning an iterator of its arguments.</span>
 </span><span id="iter_args-81"><a href="#iter_args-81"><span class="linenos">81</span></a>
 </span><span id="iter_args-82"><a href="#iter_args-82"><span class="linenos">82</span></a><span class="sd">    * useful for API&#39;s with single iterable constructors</span>
 </span><span id="iter_args-83"><a href="#iter_args-83"><span class="linenos">83</span></a>
@@ -293,7 +293,7 @@ a sequence of the original arguments.</p>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Function returning an iterators of its arguments.</p>
+            <div class="docstring"><p>Function returning an iterator of its arguments.</p>
 
 <ul>
 <li>useful for API's with single iterable constructors</li>
