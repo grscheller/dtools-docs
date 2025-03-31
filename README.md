@@ -25,6 +25,7 @@ Projects on PyPi:
 - [dtools.datastructures](https://pypi.org/project/dtools.datastructures/)
 - [dtools.fp](https://pypi.org/project/dtools.fp/)
 - [dtools.queues](https://pypi.org/project/dtools.queues/)
+- [dtools.tuples](https://pypi.org/project/dtools.tuples/)
 
 ## Source Code
 
@@ -34,18 +35,16 @@ GitHub source code repos:
 - [dtools-datastructures](https://github.com/grscheller/dtools-datastructures/)
 - [dtools-fp](https://github.com/grscheller/dtools-fp/)
 - [dtools-queues](https://github.com/grscheller/dtools-queues/)
+- [dtools-tuoles](https://github.com/grscheller/dtools-tuoles/)
 
 ## Documentation Generation
 
-Using the dtools.queues project as an example, here is how one generates the
+Using the dtools.ftuples project as an example, here is how one generates the
 docs with [pdoc](https://pypi.org/project/pdoc/).
 
 ```bash
-    $ cd ~/devel/pypi/dtools/dtools-docs/queues/API/development/
+    $ cd ~/devel/pypi/dtools/dtools-docs/tuples/API/development/
     $ rm -r dtools/ index.html search.js
-    $ PYTHONPATH=~/devel/pypi/dtools/dtools-queues/src:\
-    ~/devel/pypi/dtools/dtools-fp/src:\
-    ~/devel/pypi/dtools/dtools-circular-array/src:\
-    ~/devel/pypi/dtools/dtools-datastructures/src
-    $ pdoc -o . dtools.queues
+    $ PYTHONPATH=~/devel/pypi/dtools/dtools-queues/src:~/devel/pypi/dtools/dtools-fp/src:
+    $ pdoc -o . dtools.tuples
 ```
