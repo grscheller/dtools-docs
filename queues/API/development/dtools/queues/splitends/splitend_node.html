@@ -30,6 +30,30 @@
 
             <h2>API Documentation</h2>
                 <ul class="memberlist">
+            <li>
+                    <a class="class" href="#SENode">SENode</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#SENode.__init__">SENode</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#SENode.data_eq">data_eq</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#SENode.get_data">get_data</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#SENode.fold">fold</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#SENode.pop2">pop2</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#SENode.push_data">push_data</a>
+                        </li>
+                </ul>
+
+            </li>
     </ul>
 
 
@@ -87,8 +111,8 @@ other data structures which contain these data structures.</p>
 </span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a><span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span>
 </span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a>
 </span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a>
-</span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a><span class="k">class</span><span class="w"> </span><span class="nc">_SENode</span><span class="p">[</span><span class="n">D</span><span class="p">]:</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Data node for class SplitEnd </span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a><span class="k">class</span><span class="w"> </span><span class="nc">SENode</span><span class="p">[</span><span class="n">D</span><span class="p">]:</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Data node for class SplitEnd</span>
 </span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a>
 </span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a><span class="sd">    - data node for a top-to-root singularly linked list.</span>
 </span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a><span class="sd">    - designed so multiple splitends can safely share the same data</span>
@@ -108,7 +132,7 @@ other data structures which contain these data structures.</p>
 </span><span id="L-50"><a href="#L-50"><span class="linenos"> 50</span></a>
 </span><span id="L-51"><a href="#L-51"><span class="linenos"> 51</span></a>    <span class="vm">__slots__</span> <span class="o">=</span> <span class="s1">&#39;_data&#39;</span><span class="p">,</span> <span class="s1">&#39;_prev&#39;</span>
 </span><span id="L-52"><a href="#L-52"><span class="linenos"> 52</span></a>
-</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">D</span><span class="p">,</span> <span class="n">prev</span><span class="p">:</span> <span class="n">MB</span><span class="p">[</span><span class="n">_SENode</span><span class="p">[</span><span class="n">D</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-53"><a href="#L-53"><span class="linenos"> 53</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">D</span><span class="p">,</span> <span class="n">prev</span><span class="p">:</span> <span class="n">MB</span><span class="p">[</span><span class="n">SENode</span><span class="p">[</span><span class="n">D</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </span><span id="L-54"><a href="#L-54"><span class="linenos"> 54</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span>
 </span><span id="L-55"><a href="#L-55"><span class="linenos"> 55</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_prev</span> <span class="o">=</span> <span class="n">prev</span>
 </span><span id="L-56"><a href="#L-56"><span class="linenos"> 56</span></a>
@@ -122,7 +146,7 @@ other data structures which contain these data structures.</p>
 </span><span id="L-64"><a href="#L-64"><span class="linenos"> 64</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__bool__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 </span><span id="L-65"><a href="#L-65"><span class="linenos"> 65</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prev</span> <span class="o">!=</span> <span class="n">MB</span><span class="p">()</span>
 </span><span id="L-66"><a href="#L-66"><span class="linenos"> 66</span></a>
-</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">data_eq</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">_SENode</span><span class="p">[</span><span class="n">D</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span id="L-67"><a href="#L-67"><span class="linenos"> 67</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">data_eq</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">SENode</span><span class="p">[</span><span class="n">D</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 </span><span id="L-68"><a href="#L-68"><span class="linenos"> 68</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Return true if other node has same or equal data.&quot;&quot;&quot;</span>
 </span><span id="L-69"><a href="#L-69"><span class="linenos"> 69</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="ow">is</span> <span class="n">other</span><span class="o">.</span><span class="n">_data</span><span class="p">:</span>
 </span><span id="L-70"><a href="#L-70"><span class="linenos"> 70</span></a>            <span class="k">return</span> <span class="kc">True</span>
@@ -134,46 +158,326 @@ other data structures which contain these data structures.</p>
 </span><span id="L-76"><a href="#L-76"><span class="linenos"> 76</span></a>        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)):</span>
 </span><span id="L-77"><a href="#L-77"><span class="linenos"> 77</span></a>            <span class="k">return</span> <span class="kc">False</span>
 </span><span id="L-78"><a href="#L-78"><span class="linenos"> 78</span></a>
-</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prev</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_prev</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_eq</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
-</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>                <span class="k">return</span> <span class="kc">True</span>
-</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>        <span class="k">return</span> <span class="kc">False</span>
-</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a>
-</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">D</span><span class="p">:</span>
-</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Return contained data&quot;&quot;&quot;</span>
-</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
-</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a>
-</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fold</span><span class="p">[</span><span class="n">T</span><span class="p">](</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">,</span> <span class="n">D</span><span class="p">],</span> <span class="n">T</span><span class="p">],</span> <span class="n">init</span><span class="p">:</span> <span class="n">T</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
-</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Reduce data across linked nodes.</span>
-</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a>
-</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">        - with a function and an optional starting value</span>
-</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a><span class="sd">        - reduces in natural LIFO order</span>
-</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">          - from self to the root</span>
-</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>
-</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a><span class="sd">        &quot;&quot;&quot;</span>
-</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>        <span class="k">if</span> <span class="n">init</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>            <span class="n">acc</span><span class="p">:</span> <span class="n">T</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
-</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>            <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prev</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>            <span class="n">acc</span> <span class="o">=</span> <span class="n">init</span>
-</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>            <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span>
-</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>
-</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>        <span class="k">while</span> <span class="n">node</span><span class="p">:</span>
-</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>            <span class="n">acc</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">acc</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
-</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>            <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">_prev</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>        <span class="n">acc</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">acc</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
-</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>        <span class="k">return</span> <span class="n">acc</span>
-</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a>
-</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">pop2</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">D</span><span class="p">,</span> <span class="n">MB</span><span class="p">[</span><span class="n">_SENode</span><span class="p">[</span><span class="n">D</span><span class="p">]]]:</span>
-</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the data in the *head* and potential *tail*.&quot;&quot;&quot;</span>
-</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prev</span>
-</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a>
-</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">push_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">D</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_SENode</span><span class="p">[</span><span class="n">D</span><span class="p">]:</span>
-</span><span id="L-113"><a href="#L-113"><span class="linenos">113</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Push data onto the queue and return a new node containing the data.&quot;&quot;&quot;</span>
-</span><span id="L-114"><a href="#L-114"><span class="linenos">114</span></a>        <span class="k">return</span> <span class="n">_SENode</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">MB</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+</span><span id="L-79"><a href="#L-79"><span class="linenos"> 79</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prev</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_prev</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_eq</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+</span><span id="L-80"><a href="#L-80"><span class="linenos"> 80</span></a>
+</span><span id="L-81"><a href="#L-81"><span class="linenos"> 81</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">D</span><span class="p">:</span>
+</span><span id="L-82"><a href="#L-82"><span class="linenos"> 82</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Return contained data&quot;&quot;&quot;</span>
+</span><span id="L-83"><a href="#L-83"><span class="linenos"> 83</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
+</span><span id="L-84"><a href="#L-84"><span class="linenos"> 84</span></a>
+</span><span id="L-85"><a href="#L-85"><span class="linenos"> 85</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fold</span><span class="p">[</span><span class="n">T</span><span class="p">](</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">,</span> <span class="n">D</span><span class="p">],</span> <span class="n">T</span><span class="p">],</span> <span class="n">init</span><span class="p">:</span> <span class="n">T</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+</span><span id="L-86"><a href="#L-86"><span class="linenos"> 86</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Reduce data across linked nodes.</span>
+</span><span id="L-87"><a href="#L-87"><span class="linenos"> 87</span></a>
+</span><span id="L-88"><a href="#L-88"><span class="linenos"> 88</span></a><span class="sd">        - with a function and an optional starting value</span>
+</span><span id="L-89"><a href="#L-89"><span class="linenos"> 89</span></a><span class="sd">        - reduces in natural LIFO order</span>
+</span><span id="L-90"><a href="#L-90"><span class="linenos"> 90</span></a><span class="sd">          - from self to the root</span>
+</span><span id="L-91"><a href="#L-91"><span class="linenos"> 91</span></a>
+</span><span id="L-92"><a href="#L-92"><span class="linenos"> 92</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="L-93"><a href="#L-93"><span class="linenos"> 93</span></a>        <span class="k">if</span> <span class="n">init</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="L-94"><a href="#L-94"><span class="linenos"> 94</span></a>            <span class="n">acc</span><span class="p">:</span> <span class="n">T</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
+</span><span id="L-95"><a href="#L-95"><span class="linenos"> 95</span></a>            <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prev</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</span><span id="L-96"><a href="#L-96"><span class="linenos"> 96</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="L-97"><a href="#L-97"><span class="linenos"> 97</span></a>            <span class="n">acc</span> <span class="o">=</span> <span class="n">init</span>
+</span><span id="L-98"><a href="#L-98"><span class="linenos"> 98</span></a>            <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span>
+</span><span id="L-99"><a href="#L-99"><span class="linenos"> 99</span></a>
+</span><span id="L-100"><a href="#L-100"><span class="linenos">100</span></a>        <span class="k">while</span> <span class="n">node</span><span class="p">:</span>
+</span><span id="L-101"><a href="#L-101"><span class="linenos">101</span></a>            <span class="n">acc</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">acc</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
+</span><span id="L-102"><a href="#L-102"><span class="linenos">102</span></a>            <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">_prev</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</span><span id="L-103"><a href="#L-103"><span class="linenos">103</span></a>        <span class="n">acc</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">acc</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
+</span><span id="L-104"><a href="#L-104"><span class="linenos">104</span></a>        <span class="k">return</span> <span class="n">acc</span>
+</span><span id="L-105"><a href="#L-105"><span class="linenos">105</span></a>
+</span><span id="L-106"><a href="#L-106"><span class="linenos">106</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">pop2</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">D</span><span class="p">,</span> <span class="n">MB</span><span class="p">[</span><span class="n">SENode</span><span class="p">[</span><span class="n">D</span><span class="p">]]]:</span>
+</span><span id="L-107"><a href="#L-107"><span class="linenos">107</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the data in the *head* and potential *tail*.&quot;&quot;&quot;</span>
+</span><span id="L-108"><a href="#L-108"><span class="linenos">108</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prev</span>
+</span><span id="L-109"><a href="#L-109"><span class="linenos">109</span></a>
+</span><span id="L-110"><a href="#L-110"><span class="linenos">110</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">push_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">D</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SENode</span><span class="p">[</span><span class="n">D</span><span class="p">]:</span>
+</span><span id="L-111"><a href="#L-111"><span class="linenos">111</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Push data onto the queue and return a new node containing the data.&quot;&quot;&quot;</span>
+</span><span id="L-112"><a href="#L-112"><span class="linenos">112</span></a>        <span class="k">return</span> <span class="n">SENode</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">MB</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
 </span></pre></div>
 
 
             </section>
+                <section id="SENode">
+                            <input id="SENode-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">SENode</span><wbr>(<span class="base">typing.Generic[D]</span>):
+
+                <label class="view-source-button" for="SENode-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#SENode"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SENode-33"><a href="#SENode-33"><span class="linenos"> 33</span></a><span class="k">class</span><span class="w"> </span><span class="nc">SENode</span><span class="p">[</span><span class="n">D</span><span class="p">]:</span>
+</span><span id="SENode-34"><a href="#SENode-34"><span class="linenos"> 34</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Data node for class SplitEnd</span>
+</span><span id="SENode-35"><a href="#SENode-35"><span class="linenos"> 35</span></a>
+</span><span id="SENode-36"><a href="#SENode-36"><span class="linenos"> 36</span></a><span class="sd">    - data node for a top-to-root singularly linked list.</span>
+</span><span id="SENode-37"><a href="#SENode-37"><span class="linenos"> 37</span></a><span class="sd">    - designed so multiple splitends can safely share the same data</span>
+</span><span id="SENode-38"><a href="#SENode-38"><span class="linenos"> 38</span></a><span class="sd">    - this type of node always</span>
+</span><span id="SENode-39"><a href="#SENode-39"><span class="linenos"> 39</span></a><span class="sd">      - contain data</span>
+</span><span id="SENode-40"><a href="#SENode-40"><span class="linenos"> 40</span></a><span class="sd">      - potential link to previous node</span>
+</span><span id="SENode-41"><a href="#SENode-41"><span class="linenos"> 41</span></a><span class="sd">    - nodes point towards a unique &quot;bottom node&quot; with no predecessor</span>
+</span><span id="SENode-42"><a href="#SENode-42"><span class="linenos"> 42</span></a><span class="sd">      - in a Boolean context returns true if not at the bottom</span>
+</span><span id="SENode-43"><a href="#SENode-43"><span class="linenos"> 43</span></a><span class="sd">      - multiple bottom nodes can exist</span>
+</span><span id="SENode-44"><a href="#SENode-44"><span class="linenos"> 44</span></a><span class="sd">    - two nodes compare as equal if</span>
+</span><span id="SENode-45"><a href="#SENode-45"><span class="linenos"> 45</span></a><span class="sd">      - both their previous Nodes are the same</span>
+</span><span id="SENode-46"><a href="#SENode-46"><span class="linenos"> 46</span></a><span class="sd">      - their data compares as equal</span>
+</span><span id="SENode-47"><a href="#SENode-47"><span class="linenos"> 47</span></a><span class="sd">    - more than one node can point to the same proceeding node</span>
+</span><span id="SENode-48"><a href="#SENode-48"><span class="linenos"> 48</span></a><span class="sd">      - forming bush like graphs</span>
+</span><span id="SENode-49"><a href="#SENode-49"><span class="linenos"> 49</span></a>
+</span><span id="SENode-50"><a href="#SENode-50"><span class="linenos"> 50</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="SENode-51"><a href="#SENode-51"><span class="linenos"> 51</span></a>
+</span><span id="SENode-52"><a href="#SENode-52"><span class="linenos"> 52</span></a>    <span class="vm">__slots__</span> <span class="o">=</span> <span class="s1">&#39;_data&#39;</span><span class="p">,</span> <span class="s1">&#39;_prev&#39;</span>
+</span><span id="SENode-53"><a href="#SENode-53"><span class="linenos"> 53</span></a>
+</span><span id="SENode-54"><a href="#SENode-54"><span class="linenos"> 54</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">D</span><span class="p">,</span> <span class="n">prev</span><span class="p">:</span> <span class="n">MB</span><span class="p">[</span><span class="n">SENode</span><span class="p">[</span><span class="n">D</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="SENode-55"><a href="#SENode-55"><span class="linenos"> 55</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span>
+</span><span id="SENode-56"><a href="#SENode-56"><span class="linenos"> 56</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_prev</span> <span class="o">=</span> <span class="n">prev</span>
+</span><span id="SENode-57"><a href="#SENode-57"><span class="linenos"> 57</span></a>
+</span><span id="SENode-58"><a href="#SENode-58"><span class="linenos"> 58</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">D</span><span class="p">]:</span>
+</span><span id="SENode-59"><a href="#SENode-59"><span class="linenos"> 59</span></a>        <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span>
+</span><span id="SENode-60"><a href="#SENode-60"><span class="linenos"> 60</span></a>        <span class="k">while</span> <span class="n">node</span><span class="p">:</span>
+</span><span id="SENode-61"><a href="#SENode-61"><span class="linenos"> 61</span></a>            <span class="k">yield</span> <span class="n">node</span><span class="o">.</span><span class="n">_data</span>
+</span><span id="SENode-62"><a href="#SENode-62"><span class="linenos"> 62</span></a>            <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">_prev</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</span><span id="SENode-63"><a href="#SENode-63"><span class="linenos"> 63</span></a>        <span class="k">yield</span> <span class="n">node</span><span class="o">.</span><span class="n">_data</span>
+</span><span id="SENode-64"><a href="#SENode-64"><span class="linenos"> 64</span></a>
+</span><span id="SENode-65"><a href="#SENode-65"><span class="linenos"> 65</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__bool__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span id="SENode-66"><a href="#SENode-66"><span class="linenos"> 66</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prev</span> <span class="o">!=</span> <span class="n">MB</span><span class="p">()</span>
+</span><span id="SENode-67"><a href="#SENode-67"><span class="linenos"> 67</span></a>
+</span><span id="SENode-68"><a href="#SENode-68"><span class="linenos"> 68</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">data_eq</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">SENode</span><span class="p">[</span><span class="n">D</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span id="SENode-69"><a href="#SENode-69"><span class="linenos"> 69</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Return true if other node has same or equal data.&quot;&quot;&quot;</span>
+</span><span id="SENode-70"><a href="#SENode-70"><span class="linenos"> 70</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="ow">is</span> <span class="n">other</span><span class="o">.</span><span class="n">_data</span><span class="p">:</span>
+</span><span id="SENode-71"><a href="#SENode-71"><span class="linenos"> 71</span></a>            <span class="k">return</span> <span class="kc">True</span>
+</span><span id="SENode-72"><a href="#SENode-72"><span class="linenos"> 72</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_data</span><span class="p">:</span>
+</span><span id="SENode-73"><a href="#SENode-73"><span class="linenos"> 73</span></a>            <span class="k">return</span> <span class="kc">True</span>
+</span><span id="SENode-74"><a href="#SENode-74"><span class="linenos"> 74</span></a>        <span class="k">return</span> <span class="kc">False</span>
+</span><span id="SENode-75"><a href="#SENode-75"><span class="linenos"> 75</span></a>
+</span><span id="SENode-76"><a href="#SENode-76"><span class="linenos"> 76</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span id="SENode-77"><a href="#SENode-77"><span class="linenos"> 77</span></a>        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)):</span>
+</span><span id="SENode-78"><a href="#SENode-78"><span class="linenos"> 78</span></a>            <span class="k">return</span> <span class="kc">False</span>
+</span><span id="SENode-79"><a href="#SENode-79"><span class="linenos"> 79</span></a>
+</span><span id="SENode-80"><a href="#SENode-80"><span class="linenos"> 80</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prev</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_prev</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_eq</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+</span><span id="SENode-81"><a href="#SENode-81"><span class="linenos"> 81</span></a>
+</span><span id="SENode-82"><a href="#SENode-82"><span class="linenos"> 82</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">D</span><span class="p">:</span>
+</span><span id="SENode-83"><a href="#SENode-83"><span class="linenos"> 83</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Return contained data&quot;&quot;&quot;</span>
+</span><span id="SENode-84"><a href="#SENode-84"><span class="linenos"> 84</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
+</span><span id="SENode-85"><a href="#SENode-85"><span class="linenos"> 85</span></a>
+</span><span id="SENode-86"><a href="#SENode-86"><span class="linenos"> 86</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fold</span><span class="p">[</span><span class="n">T</span><span class="p">](</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">,</span> <span class="n">D</span><span class="p">],</span> <span class="n">T</span><span class="p">],</span> <span class="n">init</span><span class="p">:</span> <span class="n">T</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+</span><span id="SENode-87"><a href="#SENode-87"><span class="linenos"> 87</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Reduce data across linked nodes.</span>
+</span><span id="SENode-88"><a href="#SENode-88"><span class="linenos"> 88</span></a>
+</span><span id="SENode-89"><a href="#SENode-89"><span class="linenos"> 89</span></a><span class="sd">        - with a function and an optional starting value</span>
+</span><span id="SENode-90"><a href="#SENode-90"><span class="linenos"> 90</span></a><span class="sd">        - reduces in natural LIFO order</span>
+</span><span id="SENode-91"><a href="#SENode-91"><span class="linenos"> 91</span></a><span class="sd">          - from self to the root</span>
+</span><span id="SENode-92"><a href="#SENode-92"><span class="linenos"> 92</span></a>
+</span><span id="SENode-93"><a href="#SENode-93"><span class="linenos"> 93</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SENode-94"><a href="#SENode-94"><span class="linenos"> 94</span></a>        <span class="k">if</span> <span class="n">init</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="SENode-95"><a href="#SENode-95"><span class="linenos"> 95</span></a>            <span class="n">acc</span><span class="p">:</span> <span class="n">T</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
+</span><span id="SENode-96"><a href="#SENode-96"><span class="linenos"> 96</span></a>            <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prev</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</span><span id="SENode-97"><a href="#SENode-97"><span class="linenos"> 97</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="SENode-98"><a href="#SENode-98"><span class="linenos"> 98</span></a>            <span class="n">acc</span> <span class="o">=</span> <span class="n">init</span>
+</span><span id="SENode-99"><a href="#SENode-99"><span class="linenos"> 99</span></a>            <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span>
+</span><span id="SENode-100"><a href="#SENode-100"><span class="linenos">100</span></a>
+</span><span id="SENode-101"><a href="#SENode-101"><span class="linenos">101</span></a>        <span class="k">while</span> <span class="n">node</span><span class="p">:</span>
+</span><span id="SENode-102"><a href="#SENode-102"><span class="linenos">102</span></a>            <span class="n">acc</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">acc</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
+</span><span id="SENode-103"><a href="#SENode-103"><span class="linenos">103</span></a>            <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">_prev</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</span><span id="SENode-104"><a href="#SENode-104"><span class="linenos">104</span></a>        <span class="n">acc</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">acc</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
+</span><span id="SENode-105"><a href="#SENode-105"><span class="linenos">105</span></a>        <span class="k">return</span> <span class="n">acc</span>
+</span><span id="SENode-106"><a href="#SENode-106"><span class="linenos">106</span></a>
+</span><span id="SENode-107"><a href="#SENode-107"><span class="linenos">107</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">pop2</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">D</span><span class="p">,</span> <span class="n">MB</span><span class="p">[</span><span class="n">SENode</span><span class="p">[</span><span class="n">D</span><span class="p">]]]:</span>
+</span><span id="SENode-108"><a href="#SENode-108"><span class="linenos">108</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the data in the *head* and potential *tail*.&quot;&quot;&quot;</span>
+</span><span id="SENode-109"><a href="#SENode-109"><span class="linenos">109</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prev</span>
+</span><span id="SENode-110"><a href="#SENode-110"><span class="linenos">110</span></a>
+</span><span id="SENode-111"><a href="#SENode-111"><span class="linenos">111</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">push_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">D</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SENode</span><span class="p">[</span><span class="n">D</span><span class="p">]:</span>
+</span><span id="SENode-112"><a href="#SENode-112"><span class="linenos">112</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Push data onto the queue and return a new node containing the data.&quot;&quot;&quot;</span>
+</span><span id="SENode-113"><a href="#SENode-113"><span class="linenos">113</span></a>        <span class="k">return</span> <span class="n">SENode</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">MB</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Data node for class SplitEnd</p>
+
+<ul>
+<li>data node for a top-to-root singularly linked list.</li>
+<li>designed so multiple splitends can safely share the same data</li>
+<li>this type of node always
+<ul>
+<li>contain data</li>
+<li>potential link to previous node</li>
+</ul></li>
+<li>nodes point towards a unique "bottom node" with no predecessor
+<ul>
+<li>in a Boolean context returns true if not at the bottom</li>
+<li>multiple bottom nodes can exist</li>
+</ul></li>
+<li>two nodes compare as equal if
+<ul>
+<li>both their previous Nodes are the same</li>
+<li>their data compares as equal</li>
+</ul></li>
+<li>more than one node can point to the same proceeding node
+<ul>
+<li>forming bush like graphs</li>
+</ul></li>
+</ul>
+</div>
+
+
+                            <div id="SENode.__init__" class="classattr">
+                                        <input id="SENode.__init__-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="name">SENode</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">data</span><span class="p">:</span> <span class="o">~</span><span class="n">D</span>,</span><span class="param">	<span class="n">prev</span><span class="p">:</span> <span class="n">dtools</span><span class="o">.</span><span class="n">fp</span><span class="o">.</span><span class="n">err_handling</span><span class="o">.</span><span class="n">MB</span><span class="p">[</span><span class="n"><a href="#SENode">SENode</a></span><span class="p">[</span><span class="o">~</span><span class="n">D</span><span class="p">]]</span></span>)</span>
+
+                <label class="view-source-button" for="SENode.__init__-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#SENode.__init__"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SENode.__init__-54"><a href="#SENode.__init__-54"><span class="linenos">54</span></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">D</span><span class="p">,</span> <span class="n">prev</span><span class="p">:</span> <span class="n">MB</span><span class="p">[</span><span class="n">SENode</span><span class="p">[</span><span class="n">D</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="SENode.__init__-55"><a href="#SENode.__init__-55"><span class="linenos">55</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span>
+</span><span id="SENode.__init__-56"><a href="#SENode.__init__-56"><span class="linenos">56</span></a>        <span class="bp">self</span><span class="o">.</span><span class="n">_prev</span> <span class="o">=</span> <span class="n">prev</span>
+</span></pre></div>
+
+
+    
+
+                            </div>
+                            <div id="SENode.data_eq" class="classattr">
+                                        <input id="SENode.data_eq-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">data_eq</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">other</span><span class="p">:</span> <span class="n"><a href="#SENode">SENode</a></span><span class="p">[</span><span class="o">~</span><span class="n">D</span><span class="p">]</span></span><span class="return-annotation">) -> <span class="nb">bool</span>:</span></span>
+
+                <label class="view-source-button" for="SENode.data_eq-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#SENode.data_eq"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SENode.data_eq-68"><a href="#SENode.data_eq-68"><span class="linenos">68</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">data_eq</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">SENode</span><span class="p">[</span><span class="n">D</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span><span id="SENode.data_eq-69"><a href="#SENode.data_eq-69"><span class="linenos">69</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Return true if other node has same or equal data.&quot;&quot;&quot;</span>
+</span><span id="SENode.data_eq-70"><a href="#SENode.data_eq-70"><span class="linenos">70</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="ow">is</span> <span class="n">other</span><span class="o">.</span><span class="n">_data</span><span class="p">:</span>
+</span><span id="SENode.data_eq-71"><a href="#SENode.data_eq-71"><span class="linenos">71</span></a>            <span class="k">return</span> <span class="kc">True</span>
+</span><span id="SENode.data_eq-72"><a href="#SENode.data_eq-72"><span class="linenos">72</span></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_data</span><span class="p">:</span>
+</span><span id="SENode.data_eq-73"><a href="#SENode.data_eq-73"><span class="linenos">73</span></a>            <span class="k">return</span> <span class="kc">True</span>
+</span><span id="SENode.data_eq-74"><a href="#SENode.data_eq-74"><span class="linenos">74</span></a>        <span class="k">return</span> <span class="kc">False</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Return true if other node has same or equal data.</p>
+</div>
+
+
+                            </div>
+                            <div id="SENode.get_data" class="classattr">
+                                        <input id="SENode.get_data-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">get_data</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">D</span>:</span></span>
+
+                <label class="view-source-button" for="SENode.get_data-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#SENode.get_data"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SENode.get_data-82"><a href="#SENode.get_data-82"><span class="linenos">82</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">D</span><span class="p">:</span>
+</span><span id="SENode.get_data-83"><a href="#SENode.get_data-83"><span class="linenos">83</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Return contained data&quot;&quot;&quot;</span>
+</span><span id="SENode.get_data-84"><a href="#SENode.get_data-84"><span class="linenos">84</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Return contained data</p>
+</div>
+
+
+                            </div>
+                            <div id="SENode.fold" class="classattr">
+                                        <input id="SENode.fold-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">fold</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="o">~</span><span class="n">T</span><span class="p">,</span> <span class="o">~</span><span class="n">D</span><span class="p">],</span> <span class="o">~</span><span class="n">T</span><span class="p">]</span>, </span><span class="param"><span class="n">init</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="o">~</span><span class="n">T</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="o">~</span><span class="n">T</span>:</span></span>
+
+                <label class="view-source-button" for="SENode.fold-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#SENode.fold"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SENode.fold-86"><a href="#SENode.fold-86"><span class="linenos"> 86</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fold</span><span class="p">[</span><span class="n">T</span><span class="p">](</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">,</span> <span class="n">D</span><span class="p">],</span> <span class="n">T</span><span class="p">],</span> <span class="n">init</span><span class="p">:</span> <span class="n">T</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
+</span><span id="SENode.fold-87"><a href="#SENode.fold-87"><span class="linenos"> 87</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Reduce data across linked nodes.</span>
+</span><span id="SENode.fold-88"><a href="#SENode.fold-88"><span class="linenos"> 88</span></a>
+</span><span id="SENode.fold-89"><a href="#SENode.fold-89"><span class="linenos"> 89</span></a><span class="sd">        - with a function and an optional starting value</span>
+</span><span id="SENode.fold-90"><a href="#SENode.fold-90"><span class="linenos"> 90</span></a><span class="sd">        - reduces in natural LIFO order</span>
+</span><span id="SENode.fold-91"><a href="#SENode.fold-91"><span class="linenos"> 91</span></a><span class="sd">          - from self to the root</span>
+</span><span id="SENode.fold-92"><a href="#SENode.fold-92"><span class="linenos"> 92</span></a>
+</span><span id="SENode.fold-93"><a href="#SENode.fold-93"><span class="linenos"> 93</span></a><span class="sd">        &quot;&quot;&quot;</span>
+</span><span id="SENode.fold-94"><a href="#SENode.fold-94"><span class="linenos"> 94</span></a>        <span class="k">if</span> <span class="n">init</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="SENode.fold-95"><a href="#SENode.fold-95"><span class="linenos"> 95</span></a>            <span class="n">acc</span><span class="p">:</span> <span class="n">T</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
+</span><span id="SENode.fold-96"><a href="#SENode.fold-96"><span class="linenos"> 96</span></a>            <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prev</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</span><span id="SENode.fold-97"><a href="#SENode.fold-97"><span class="linenos"> 97</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="SENode.fold-98"><a href="#SENode.fold-98"><span class="linenos"> 98</span></a>            <span class="n">acc</span> <span class="o">=</span> <span class="n">init</span>
+</span><span id="SENode.fold-99"><a href="#SENode.fold-99"><span class="linenos"> 99</span></a>            <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span>
+</span><span id="SENode.fold-100"><a href="#SENode.fold-100"><span class="linenos">100</span></a>
+</span><span id="SENode.fold-101"><a href="#SENode.fold-101"><span class="linenos">101</span></a>        <span class="k">while</span> <span class="n">node</span><span class="p">:</span>
+</span><span id="SENode.fold-102"><a href="#SENode.fold-102"><span class="linenos">102</span></a>            <span class="n">acc</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">acc</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
+</span><span id="SENode.fold-103"><a href="#SENode.fold-103"><span class="linenos">103</span></a>            <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">_prev</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+</span><span id="SENode.fold-104"><a href="#SENode.fold-104"><span class="linenos">104</span></a>        <span class="n">acc</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">acc</span><span class="p">,</span> <span class="n">node</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
+</span><span id="SENode.fold-105"><a href="#SENode.fold-105"><span class="linenos">105</span></a>        <span class="k">return</span> <span class="n">acc</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Reduce data across linked nodes.</p>
+
+<ul>
+<li>with a function and an optional starting value</li>
+<li>reduces in natural LIFO order
+<ul>
+<li>from self to the root</li>
+</ul></li>
+</ul>
+</div>
+
+
+                            </div>
+                            <div id="SENode.pop2" class="classattr">
+                                        <input id="SENode.pop2-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">pop2</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span></span><span class="return-annotation">) -> <span class="nb">tuple</span><span class="p">[</span><span class="o">~</span><span class="n">D</span><span class="p">,</span> <span class="n">dtools</span><span class="o">.</span><span class="n">fp</span><span class="o">.</span><span class="n">err_handling</span><span class="o">.</span><span class="n">MB</span><span class="p">[</span><span class="n"><a href="#SENode">SENode</a></span><span class="p">[</span><span class="o">~</span><span class="n">D</span><span class="p">]]]</span>:</span></span>
+
+                <label class="view-source-button" for="SENode.pop2-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#SENode.pop2"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SENode.pop2-107"><a href="#SENode.pop2-107"><span class="linenos">107</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">pop2</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">D</span><span class="p">,</span> <span class="n">MB</span><span class="p">[</span><span class="n">SENode</span><span class="p">[</span><span class="n">D</span><span class="p">]]]:</span>
+</span><span id="SENode.pop2-108"><a href="#SENode.pop2-108"><span class="linenos">108</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the data in the *head* and potential *tail*.&quot;&quot;&quot;</span>
+</span><span id="SENode.pop2-109"><a href="#SENode.pop2-109"><span class="linenos">109</span></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prev</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Return the data in the <em>head</em> and potential <em>tail</em>.</p>
+</div>
+
+
+                            </div>
+                            <div id="SENode.push_data" class="classattr">
+                                        <input id="SENode.push_data-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">push_data</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">data</span><span class="p">:</span> <span class="o">~</span><span class="n">D</span></span><span class="return-annotation">) -> <span class="n"><a href="#SENode">SENode</a></span><span class="p">[</span><span class="o">~</span><span class="n">D</span><span class="p">]</span>:</span></span>
+
+                <label class="view-source-button" for="SENode.push_data-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#SENode.push_data"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="SENode.push_data-111"><a href="#SENode.push_data-111"><span class="linenos">111</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">push_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">D</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SENode</span><span class="p">[</span><span class="n">D</span><span class="p">]:</span>
+</span><span id="SENode.push_data-112"><a href="#SENode.push_data-112"><span class="linenos">112</span></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Push data onto the queue and return a new node containing the data.&quot;&quot;&quot;</span>
+</span><span id="SENode.push_data-113"><a href="#SENode.push_data-113"><span class="linenos">113</span></a>        <span class="k">return</span> <span class="n">SENode</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">MB</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Push data onto the queue and return a new node containing the data.</p>
+</div>
+
+
+                            </div>
+                </section>
     </main>
 <script>
     function escapeHTML(html) {
