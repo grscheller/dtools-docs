@@ -22,20 +22,20 @@ Detailed documentation for the developer tools project can he found
 Projects on PyPi:
 
 - [dtools.circular-array](https://pypi.org/project/dtools.circular-array/)
-- [dtools.datastructures](https://pypi.org/project/dtools.datastructures/)
 - [dtools.fp](https://pypi.org/project/dtools.fp/)
 - [dtools.queues](https://pypi.org/project/dtools.queues/)
 - [dtools.tuples](https://pypi.org/project/dtools.tuples/)
+- [dtools.datastructures](https://pypi.org/project/dtools.datastructures/) **deprecated**
 
 ## Source Code
 
 GitHub source code repos:
 
 - [dtools-circular-array](https://github.com/grscheller/dtools-circular-array/)
-- [dtools-datastructures](https://github.com/grscheller/dtools-datastructures/)
 - [dtools-fp](https://github.com/grscheller/dtools-fp/)
 - [dtools-queues](https://github.com/grscheller/dtools-queues/)
 - [dtools-tuoles](https://github.com/grscheller/dtools-tuoles/)
+- [dtools-datastructures](https://github.com/grscheller/dtools-datastructures/) **deprecated**
 
 ## Documentation Generation
 
