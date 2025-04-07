@@ -1,16 +1,14 @@
 # Developer Tools
 
-Python project of packages to aid in general software development.
+Python collection of packages to aid in general software development.
 
 These Python developer libraries consist of Python PyPI namespace
 packages all under the **dtools.** "namespace."
 
-- circular-array - An indexable double sided circular array
-- datastructures - Data structures geared to algorithms
-- fp - Pythonic functional programming tools
-
-The purpose of this collection of PyPI namespace projects is to host
-and provide infrastructure for my Python developer tools.
+- dtools.circular-array: An indexable double sided circular array
+- dtools.fp: Pythonic functional programming tools
+- dtools.queues: Queue/Stack based datastructures geared to algorithms
+- dtools.tuple: Tuple based datastructures
 
 ## Documentation
 
