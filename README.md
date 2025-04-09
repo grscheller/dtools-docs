@@ -7,13 +7,13 @@ packages all under the **dtools.** "namespace."
 
 ## PyPI `dtools.` Namespace Projects
 
-| Projects (PyPI) | Source Code (GitHub) |
-|:----------------|:-------------------- |
-| [dtools.circular-array][11] | [dtools-circular-array][21] |
-| [dtools.fp][12] | [dtools-fp][22] |
-| [dtools.queues][13] | [dtools-queues][23] |
-| [dtools.tuoles][14] | [dtools-tuoles][24] |
-| [dtools.datastrAuctures][15] | [dtools-datastructures][25] |
+| Python Package | Projects (PyPI) | Source Code (GitHub) |
+|:-------------- |:--------------- |:-------------------- |
+| dtools.circular_array | [dtools.circular-array][11] | [dtools-circular-array][21] |
+| dtools.fp | [dtools.fp][12] | [dtools-fp][22] |
+| dtools.queues | [dtools.queues][13] | [dtools-queues][23] |
+| dtools.tuples | [dtools.tuoles][14] | [dtools-tuoles][24] |
+| dtools.datastructures | [dtools.datastructures][15] | [dtools-datastructures][25] |
 
 ### Detailed Documentation
 
