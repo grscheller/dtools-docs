@@ -9,17 +9,12 @@ a:link {
   text-decoration: none;
 }
 
-a:visited {
-  color: #bc8f8f;
-  text-decoration: none;
-}
-
 a:hover {
   text-decoration: underline;
 }
 
 p {
-  margin-left: 50px;
+  margin-left: 30px;
 }
 
 h2 {
@@ -27,6 +22,9 @@ h2 {
 }
 
 h3 {
-  color: #b6927b;
-  margin-left: 30px;
+  color: #bc8f8f;
+}
+
+h4 {
+  color: #bc8f8f;
 }
