@@ -9,6 +9,8 @@ packages all under the **dtools.** "namespace."
 
 | Python Package | Projects (PyPI) | Source Code (GitHub) |
 |:-------------- |:--------------- |:-------------------- |
+| dtools.circular_array
+| [dtools.circular-array](https://pypi.org/project/dtools.circular-array/) | [dtools-circular-array](https://github.com/grscheller/dtools-circular-array/)] |
 | dtools.circular_array | [dtools.circular-array][11] | [dtools-circular-array][21] |
 | dtools.fp | [dtools.fp][12] | [dtools-fp][22] |
 | dtools.queues | [dtools.queues][13] | [dtools-queues][23] |
@@ -31,7 +33,7 @@ docs with [pdoc](https://pypi.org/project/pdoc/).
     $ rm -r dtools/ index.html search.js
     $ PYTHONPATH=~/devel/pypi/dtools/dtools-fp/src:~/devel/pypi/dtools/dtools-fp/src
     $ pdoc -o . dtools.tuples
-``
+```
 
 [11]: https://pypi.org/project/dtools.circular-array/
 [12]: https://pypi.org/project/dtools.fp/
