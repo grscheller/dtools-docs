@@ -11,8 +11,9 @@ packages all under the **dtools.** "namespace."
 | dtools.circular_array | [dtools.circular-array][11] | [dtools-circular-array][21] |
 | dtools.fp | [dtools.fp][12] | [dtools-fp][22] |
 | dtools.queues | [dtools.queues][13] | [dtools-queues][23] |
-| dtools.tuples | [dtools.tuoles][14] | [dtools-tuoles][24] |
-| dtools.datastructures | [dtools.datastructures][15] | [dtools-datastructures][25] |
+| dtools.splitends | [dtools.splitends][14] | [dtools-splitends][24] |
+| dtools.tuples | [dtools.tuoles][15] | [dtools-tuoles][25] |
+| dtools.datastructures | [dtools.datastructures][16] | [dtools-datastructures][26] |
 
 ### Detailed Documentation
 
@@ -21,23 +22,25 @@ Detailed pdoc generated documentation for all the
 
 #### Documentation Generation
 
-Using the dtools.ftuples project as an example, here is how one generates the
+Using the dtools.tuples project as an example, here is how one generates the
 docs with [pdoc](https://pypi.org/project/pdoc/).
 
 ```bash
     $ cd ~/devel/pypi/dtools/dtools-docs/tuples/API/development/
     $ rm -r dtools/ index.html search.js
-    $ PYTHONPATH=~/devel/pypi/dtools/dtools-fp/src:~/devel/pypi/dtools/dtools-fp/src
+    $ PYTHONPATH=~/devel/pypi/dtools/dtools-tuples/src:~/devel/pypi/dtools/dtools-fp/src
     $ pdoc -o . dtools.tuples
 ```
 
 [11]: https://pypi.org/project/dtools.circular-array/
 [12]: https://pypi.org/project/dtools.fp/
 [13]: https://pypi.org/project/dtools.queues/
-[14]: https://pypi.org/project/dtools.tuples/
-[15]: https://pypi.org/project/dtools.datastructures/
+[14]: https://pypi.org/project/dtools.splitends/
+[15]: https://pypi.org/project/dtools.tuples/
+[16]: https://pypi.org/project/dtools.datastructures/
 [21]: https://github.com/grscheller/dtools-circular-array/
 [22]: https://github.com/grscheller/dtools-fp/
 [23]: https://github.com/grscheller/dtools-queues/
-[24]: https://github.com/grscheller/dtools-tuples/
-[25]: https://github.com/grscheller/dtools-datastructures/
+[24]: https://github.com/grscheller/dtools-splitends/
+[25]: https://github.com/grscheller/dtools-tuples/
+[26]: https://github.com/grscheller/dtools-datastructures/
