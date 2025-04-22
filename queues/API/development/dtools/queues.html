@@ -24,7 +24,7 @@
 
             <h2>Submodules</h2>
             <ul>
-                    <li><a href="queues/restrictive.html">restrictive</a></li>
+                    <li><a href="queues/types.html">types</a></li>
             </ul>
 
             <h2>API Documentation</h2>
@@ -47,14 +47,23 @@ dtools<wbr>.queues    </h1>
 
                         <div class="docstring"><h3 id="developer-tools-queue-based-data-structures">Developer Tools - Queue based data structures</h3>
 
-<h4 id="module-dtoolsqueuesrestrictive"><em>module</em> <a href="queues/restrictive.html">dtools.queues.restrictive</a></h4>
+<p>These are modeled after Python builtins. The initializers take at most one
+iterable while factory functions stand in for Python syntax.</p>
+
+<h4 id="module-dtoolsqueuestypes"><em>module</em> <a href="queues/types.html">dtools.queues.types</a></h4>
 
 <ul>
-<li>mutable data structures geared to specific algorithmic use cases
+<li>Mutable data structures geared to specific algorithmic use cases
 <ul>
-<li><em>class</em> <a href="queues/restrictive.html#FIFOQueue">dtools.queues.restrictive.FIFOQueue</a>: First In First Out Queue</li>
-<li><em>class</em> <a href="queues/restrictive.html#LIFOQueue">dtools.queues.restrictive.LIFOQueue</a>: Last In First Out Queue</li>
-<li><em>class</em> <a href="queues/restrictive.html#DoubleQueue">dtools.queues.restrictive.DoubleQueue</a>: Double-ended Queue</li>
+<li><em>class</em> <a href="queues/types.html#FIFOQueue">dtools.queues.types.FIFOQueue</a>: First In First Out Queue</li>
+<li><em>class</em> <a href="queues/types.html#LIFOQueue">dtools.queues.types.LIFOQueue</a>: Last In First Out Queue</li>
+<li><em>class</em> <a href="queues/types.html#DoubleQueue">dtools.queues.types.DoubleQueue</a>: Double-ended Queue</li>
+</ul></li>
+<li>Factory functions
+<ul>
+<li><em>function</em> <a href="queues/types.html#fifo_queue">dtools.queues.types.fifo_queue</a>: Create FIFOQueue from values</li>
+<li><em>function</em> <a href="queues/types.html#lifo_queue">dtools.queues.types.lifo_queue</a>: Create LIFOQueue from values</li>
+<li><em>function</em> <a href="queues/types.html#double_queue">dtools.queues.types.double_queue</a>: Create DoubleQueue from values</li>
 </ul></li>
 </ul>
 </div>
@@ -80,19 +89,26 @@ dtools<wbr>.queues    </h1>
 </span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a><span class="sd">### Developer Tools - Queue based data structures</span>
 </span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a>
-</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">#### *module* dtools.queues.restrictive</span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a>
-</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">- mutable data structures geared to specific algorithmic use cases</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="sd">  - *class* dtools.queues.restrictive.FIFOQueue: First In First Out Queue</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="sd">  - *class* dtools.queues.restrictive.LIFOQueue: Last In First Out Queue</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="sd">  - *class* dtools.queues.restrictive.DoubleQueue: Double-ended Queue</span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>
-</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;0.27.1.0&#39;</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Geoffrey R. Scheller&#39;</span>
-</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright (c) 2023-2025 Geoffrey R. Scheller&#39;</span>
-</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;Apache License 2.0&#39;</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">These are modeled after Python builtins. The initializers take at most one</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">iterable while factory functions stand in for Python syntax.</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="sd">#### *module* dtools.queues.types</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="sd">- Mutable data structures geared to specific algorithmic use cases</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="sd">  - *class* dtools.queues.types.FIFOQueue: First In First Out Queue</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="sd">  - *class* dtools.queues.types.LIFOQueue: Last In First Out Queue</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="sd">  - *class* dtools.queues.types.DoubleQueue: Double-ended Queue</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="sd">- Factory functions</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="sd">  - *function* dtools.queues.types.fifo_queue: Create FIFOQueue from values</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="sd">  - *function* dtools.queues.types.lifo_queue: Create LIFOQueue from values</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="sd">  - *function* dtools.queues.types.double_queue: Create DoubleQueue from values</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a><span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;0.27.2.0&#39;</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Geoffrey R. Scheller&#39;</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright (c) 2023-2025 Geoffrey R. Scheller&#39;</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;Apache License 2.0&#39;</span>
 </span></pre></div>
 
 
