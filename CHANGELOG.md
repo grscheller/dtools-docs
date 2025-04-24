@@ -4,7 +4,6 @@ PyPI Developer Tools `dtools` namespace projects
 
 ### 2025-04-22 - Renamed repo
 
-- renamed `dtools-docs` GitHub repo to just `dtools` 
 - created this CHANGELOG.md file
 - is not associated with either the
   - either the `https://pypi.org/project/dtools` PyPI project
