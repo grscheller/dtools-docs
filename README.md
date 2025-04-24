@@ -4,6 +4,10 @@ Collection of Python packages to aid in general software development.
 These Python developer libraries consist of Python PyPI namespace
 packages all under the **dtools.** "namespace."
 
+These tools tend to prefer a functional programming approach yet
+endeavor to remain Pythonic. They prefer Smalltalk OOP over 
+"Gang-of-Four" inheritance based OOP. 
+
 ## PyPI `dtools.` Namespace Projects
 
 | Python Package | Projects (PyPI) | Source Code (GitHub) |
@@ -30,6 +34,19 @@ docs with [pdoc](https://pypi.org/project/pdoc/).
     $ PYTHONPATH=~/devel/pypi/dtools/dtools-tuples/src:~/devel/pypi/dtools/dtools-fp/src
     $ pdoc -o . dtools.tuples
 ```
+
+### More Information
+
+This repo itself, as well as all the Developer Tools namespace projects,
+are licensed under the Apache License Version 2.0, January 2004.
+
+See [CHANGELOG.md](./CHANGELOG.md) for ongoing changes.
+
+This collection is not associated with either the
+`https://pypi.org/project/dtools` PyPI project or the
+`https://github.com/chermed/dtools` GitHub repo.
+
+
 
 [11]: https://pypi.org/project/dtools.circular-array/
 [12]: https://pypi.org/project/dtools.fp/
