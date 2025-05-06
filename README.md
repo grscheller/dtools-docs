@@ -13,10 +13,10 @@ endeavor to remain Pythonic. They prefer Smalltalk OOP over
 | Python Package | Projects (PyPI) | Source Code (GitHub) |
 |:-------------- |:--------------- |:-------------------- |
 | dtools.circular_array | [dtools.circular-array][11] | [dtools-circular-array][21] |
-| dtools.fp | [dtools.fp][12] | [dtools-fp][22] |
-| dtools.queues | [dtools.queues][13] | [dtools-queues][23] |
-| dtools.splitends | [dtools.splitends][14] | [dtools-splitends][24] |
-| dtools.tuples | [dtools.tuoles][15] | [dtools-tuoles][25] |
+| dtools.containers | [dtools.containers][12] | [dtools-containers][22] |
+| dtools.fp | [dtools.fp][13] | [dtools-fp][23] |
+| dtools.queues | [dtools.queues][14] | [dtools-queues][24] |
+| dtools.splitends | [dtools.splitends][15] | [dtools-splitends][25] |
 
 ### Detailed Documentation
 
@@ -49,12 +49,12 @@ This collection is not associated with either the
 
 
 [11]: https://pypi.org/project/dtools.circular-array/
-[12]: https://pypi.org/project/dtools.fp/
-[13]: https://pypi.org/project/dtools.queues/
-[14]: https://pypi.org/project/dtools.splitends/
-[15]: https://pypi.org/project/dtools.tuples/
+[12]: https://pypi.org/project/dtools.containers/
+[13]: https://pypi.org/project/dtools.fp/
+[14]: https://pypi.org/project/dtools.queues/
+[15]: https://pypi.org/project/dtools.splitends/
 [21]: https://github.com/grscheller/dtools-circular-array/
-[22]: https://github.com/grscheller/dtools-fp/
-[23]: https://github.com/grscheller/dtools-queues/
-[24]: https://github.com/grscheller/dtools-splitends/
-[25]: https://github.com/grscheller/dtools-tuples/
+[22]: https://github.com/grscheller/dtools-containers/
+[23]: https://github.com/grscheller/dtools-fp/
+[24]: https://github.com/grscheller/dtools-queues/
+[25]: https://github.com/grscheller/dtools-splitends/
