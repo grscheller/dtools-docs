@@ -23,18 +23,6 @@ endeavor to remain Pythonic. They prefer Smalltalk OOP over
 Detailed pdoc generated documentation for all the
 [Developer Tools PyPI projects](https://grscheller.github.io/dtools/).
 
-#### Documentation Generation
-
-Using the dtools.tuples project as an example, here is how one generates the
-docs with [pdoc](https://pypi.org/project/pdoc/).
-
-```bash
-    $ cd ~/devel/pypi/dtools/dtools/tuples/API/development/
-    $ rm -r dtools/ index.html search.js
-    $ PYTHONPATH=~/devel/pypi/dtools/dtools-tuples/src:~/devel/pypi/dtools/dtools-fp/src
-    $ pdoc -o . dtools.tuples
-```
-
 ### More Information
 
 This repo itself, as well as all the Developer Tools namespace projects,
@@ -43,10 +31,10 @@ are licensed under the Apache License Version 2.0, January 2004.
 See [CHANGELOG.md](./CHANGELOG.md) for ongoing changes.
 
 This collection is not associated with either the
-`https://pypi.org/project/dtools` PyPI project or the
-`https://github.com/chermed/dtools` GitHub repo.
-
-
+[https://pypi.org/project/dtools](https://pypi.org/project/dtools)
+PyPI project or the
+[https://github.com/chermed/dtools](https://github.com/chermed/dtools)
+GitHub repo.
 
 [11]: https://pypi.org/project/dtools.circular-array/
 [12]: https://pypi.org/project/dtools.containers/
