@@ -1,14 +1,13 @@
-# Developer Tools
+## Developer Tools for Python - PyPI dtools namespace projects
 
 Collection of Python packages to aid in general software development.
 These Python developer libraries consist of Python PyPI namespace
 packages all under the **dtools.** "namespace."
 
 These tools tend to prefer a functional programming approach yet
-endeavor to remain Pythonic. They prefer Smalltalk OOP over 
-"Gang-of-Four" inheritance based OOP. 
+still endeavor to remain Pythonic.
 
-## PyPI `dtools.` Namespace Projects
+### PyPI `dtools.` Namespace Projects
 
 | Python Package | Projects (PyPI) | Source Code (GitHub) |
 |:-------------- |:--------------- |:-------------------- |
@@ -18,12 +17,12 @@ endeavor to remain Pythonic. They prefer Smalltalk OOP over
 | dtools.queues | [dtools.queues][14] | [dtools-queues][24] |
 | dtools.splitends | [dtools.splitends][15] | [dtools-splitends][25] |
 
-### Detailed Documentation
+#### Detailed Documentation
 
 Detailed pdoc generated documentation for all the
-[Developer Tools PyPI projects](https://grscheller.github.io/dtools/).
+[Developer Tools PyPI projects](https://grscheller.github.io/dtools-namespace-projects/).
 
-### More Information
+#### More Information
 
 This repo itself, as well as all the Developer Tools namespace projects,
 are licensed under the Apache License Version 2.0, January 2004.
