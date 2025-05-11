@@ -167,7 +167,7 @@ dtools<wbr>.<a href="./../fp.html">fp</a><wbr>.state    </h1>
 </span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>
 </span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
 </span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypeVar</span>
-</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">dtools.circular_array.ca</span><span class="w"> </span><span class="kn">import</span> <span class="n">CA</span>
+</span><span id="L-44"><a href="#L-44"><span class="linenos"> 44</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">dtools.circular_array</span><span class="w"> </span><span class="kn">import</span> <span class="n">CA</span>
 </span><span id="L-45"><a href="#L-45"><span class="linenos"> 45</span></a>
 </span><span id="L-46"><a href="#L-46"><span class="linenos"> 46</span></a><span class="n">S</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;S&#39;</span><span class="p">)</span>    <span class="c1"># Needed only for pdoc documentation generation.</span>
 </span><span id="L-47"><a href="#L-47"><span class="linenos"> 47</span></a><span class="n">A</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>    <span class="c1"># Otherwise, ignored by both MyPy and Python. Makes</span>
@@ -270,8 +270,9 @@ dtools<wbr>.<a href="./../fp.html">fp</a><wbr>.state    </h1>
 </span><span id="L-144"><a href="#L-144"><span class="linenos">144</span></a>            <span class="k">return</span> <span class="n">ls</span>
 </span><span id="L-145"><a href="#L-145"><span class="linenos">145</span></a>
 </span><span id="L-146"><a href="#L-146"><span class="linenos">146</span></a>        <span class="k">return</span> <span class="n">CA</span><span class="p">(</span><span class="n">sas</span><span class="p">)</span><span class="o">.</span><span class="n">foldl</span><span class="p">(</span>
-</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>            <span class="k">lambda</span> <span class="n">s1</span><span class="p">,</span> <span class="n">sa</span><span class="p">:</span> <span class="n">s1</span><span class="o">.</span><span class="n">map2</span><span class="p">(</span><span class="n">sa</span><span class="p">,</span> <span class="n">append_ret</span><span class="p">),</span> <span class="n">State</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">AA</span><span class="p">]([]))</span>
-</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>        <span class="p">)</span>
+</span><span id="L-147"><a href="#L-147"><span class="linenos">147</span></a>            <span class="k">lambda</span> <span class="n">s1</span><span class="p">,</span> <span class="n">sa</span><span class="p">:</span> <span class="n">s1</span><span class="o">.</span><span class="n">map2</span><span class="p">(</span><span class="n">sa</span><span class="p">,</span> <span class="n">append_ret</span><span class="p">),</span>
+</span><span id="L-148"><a href="#L-148"><span class="linenos">148</span></a>            <span class="n">State</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">AA</span><span class="p">]([]))</span>
+</span><span id="L-149"><a href="#L-149"><span class="linenos">149</span></a>        <span class="p">)</span>
 </span></pre></div>
 
 
@@ -380,8 +381,9 @@ dtools<wbr>.<a href="./../fp.html">fp</a><wbr>.state    </h1>
 </span><span id="State-145"><a href="#State-145"><span class="linenos">145</span></a>            <span class="k">return</span> <span class="n">ls</span>
 </span><span id="State-146"><a href="#State-146"><span class="linenos">146</span></a>
 </span><span id="State-147"><a href="#State-147"><span class="linenos">147</span></a>        <span class="k">return</span> <span class="n">CA</span><span class="p">(</span><span class="n">sas</span><span class="p">)</span><span class="o">.</span><span class="n">foldl</span><span class="p">(</span>
-</span><span id="State-148"><a href="#State-148"><span class="linenos">148</span></a>            <span class="k">lambda</span> <span class="n">s1</span><span class="p">,</span> <span class="n">sa</span><span class="p">:</span> <span class="n">s1</span><span class="o">.</span><span class="n">map2</span><span class="p">(</span><span class="n">sa</span><span class="p">,</span> <span class="n">append_ret</span><span class="p">),</span> <span class="n">State</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">AA</span><span class="p">]([]))</span>
-</span><span id="State-149"><a href="#State-149"><span class="linenos">149</span></a>        <span class="p">)</span>
+</span><span id="State-148"><a href="#State-148"><span class="linenos">148</span></a>            <span class="k">lambda</span> <span class="n">s1</span><span class="p">,</span> <span class="n">sa</span><span class="p">:</span> <span class="n">s1</span><span class="o">.</span><span class="n">map2</span><span class="p">(</span><span class="n">sa</span><span class="p">,</span> <span class="n">append_ret</span><span class="p">),</span>
+</span><span id="State-149"><a href="#State-149"><span class="linenos">149</span></a>            <span class="n">State</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">AA</span><span class="p">]([]))</span>
+</span><span id="State-150"><a href="#State-150"><span class="linenos">150</span></a>        <span class="p">)</span>
 </span></pre></div>
 
 
@@ -705,8 +707,9 @@ dtools<wbr>.<a href="./../fp.html">fp</a><wbr>.state    </h1>
 </span><span id="State.sequence-145"><a href="#State.sequence-145"><span class="linenos">145</span></a>            <span class="k">return</span> <span class="n">ls</span>
 </span><span id="State.sequence-146"><a href="#State.sequence-146"><span class="linenos">146</span></a>
 </span><span id="State.sequence-147"><a href="#State.sequence-147"><span class="linenos">147</span></a>        <span class="k">return</span> <span class="n">CA</span><span class="p">(</span><span class="n">sas</span><span class="p">)</span><span class="o">.</span><span class="n">foldl</span><span class="p">(</span>
-</span><span id="State.sequence-148"><a href="#State.sequence-148"><span class="linenos">148</span></a>            <span class="k">lambda</span> <span class="n">s1</span><span class="p">,</span> <span class="n">sa</span><span class="p">:</span> <span class="n">s1</span><span class="o">.</span><span class="n">map2</span><span class="p">(</span><span class="n">sa</span><span class="p">,</span> <span class="n">append_ret</span><span class="p">),</span> <span class="n">State</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">AA</span><span class="p">]([]))</span>
-</span><span id="State.sequence-149"><a href="#State.sequence-149"><span class="linenos">149</span></a>        <span class="p">)</span>
+</span><span id="State.sequence-148"><a href="#State.sequence-148"><span class="linenos">148</span></a>            <span class="k">lambda</span> <span class="n">s1</span><span class="p">,</span> <span class="n">sa</span><span class="p">:</span> <span class="n">s1</span><span class="o">.</span><span class="n">map2</span><span class="p">(</span><span class="n">sa</span><span class="p">,</span> <span class="n">append_ret</span><span class="p">),</span>
+</span><span id="State.sequence-149"><a href="#State.sequence-149"><span class="linenos">149</span></a>            <span class="n">State</span><span class="o">.</span><span class="n">unit</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="n">AA</span><span class="p">]([]))</span>
+</span><span id="State.sequence-150"><a href="#State.sequence-150"><span class="linenos">150</span></a>        <span class="p">)</span>
 </span></pre></div>
 
 
