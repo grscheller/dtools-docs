@@ -128,15 +128,15 @@ Useful to delay a function's evaluation until some inner scope.</p>
 </span><span id="L-29"><a href="#L-29"><span class="linenos"> 29</span></a>
 </span><span id="L-30"><a href="#L-30"><span class="linenos"> 30</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
 </span><span id="L-31"><a href="#L-31"><span class="linenos"> 31</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Final</span><span class="p">,</span> <span class="n">Never</span><span class="p">,</span> <span class="n">TypeVar</span><span class="p">,</span> <span class="n">ParamSpec</span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.err_handling</span><span class="w"> </span><span class="kn">import</span> <span class="n">MayBe</span> <span class="k">as</span> <span class="n">MB</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.err_handling</span><span class="w"> </span><span class="kn">import</span> <span class="n">Xor</span><span class="p">,</span> <span class="n">LEFT</span><span class="p">,</span> <span class="n">RIGHT</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos"> 32</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">dtools.containers.maybe</span><span class="w"> </span><span class="kn">import</span> <span class="n">MayBe</span> <span class="k">as</span> <span class="n">MB</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos"> 33</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">dtools.containers.xor</span><span class="w"> </span><span class="kn">import</span> <span class="n">Xor</span><span class="p">,</span> <span class="n">LEFT</span><span class="p">,</span> <span class="n">RIGHT</span>
 </span><span id="L-34"><a href="#L-34"><span class="linenos"> 34</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.function</span><span class="w"> </span><span class="kn">import</span> <span class="n">sequenced</span>
 </span><span id="L-35"><a href="#L-35"><span class="linenos"> 35</span></a>
 </span><span id="L-36"><a href="#L-36"><span class="linenos"> 36</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Lazy&#39;</span><span class="p">,</span> <span class="s1">&#39;lazy&#39;</span><span class="p">,</span> <span class="s1">&#39;real_lazy&#39;</span><span class="p">]</span>
 </span><span id="L-37"><a href="#L-37"><span class="linenos"> 37</span></a>
-</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="n">D</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>  <span class="c1"># Needed only for pdoc documentation generation. When</span>
-</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="n">R</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;R&#39;</span><span class="p">)</span>  <span class="c1"># used on function and method signatures, linters will</span>
-</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="n">P</span> <span class="o">=</span> <span class="n">ParamSpec</span><span class="p">(</span><span class="s1">&#39;P&#39;</span><span class="p">)</span>  <span class="c1"># show &quot;redefined-outer-name&quot; warnings.</span>
+</span><span id="L-38"><a href="#L-38"><span class="linenos"> 38</span></a><span class="n">D</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
+</span><span id="L-39"><a href="#L-39"><span class="linenos"> 39</span></a><span class="n">R</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="n">contravariant</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span id="L-40"><a href="#L-40"><span class="linenos"> 40</span></a><span class="n">P</span> <span class="o">=</span> <span class="n">ParamSpec</span><span class="p">(</span><span class="s1">&#39;P&#39;</span><span class="p">)</span>
 </span><span id="L-41"><a href="#L-41"><span class="linenos"> 41</span></a>
 </span><span id="L-42"><a href="#L-42"><span class="linenos"> 42</span></a>
 </span><span id="L-43"><a href="#L-43"><span class="linenos"> 43</span></a><span class="k">class</span><span class="w"> </span><span class="nc">Lazy</span><span class="p">[</span><span class="n">D</span><span class="p">,</span> <span class="n">R</span><span class="p">]:</span>
@@ -396,7 +396,7 @@ arguments wrapped in Lazy instances.</p>
                                         <input id="Lazy.__init__-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
             
-        <span class="name">Lazy</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="o">~</span><span class="n">D</span><span class="p">],</span> <span class="o">~</span><span class="n">R</span><span class="p">]</span>, </span><span class="param"><span class="n">d</span><span class="p">:</span> <span class="o">~</span><span class="n">D</span>, </span><span class="param"><span class="n">pure</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span></span>)</span>
+        <span class="name">Lazy</span><span class="signature pdoc-code condensed">(<span class="param"><span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="o">~</span><span class="n">D</span><span class="p">],</span> <span class="o">-</span><span class="n">R</span><span class="p">]</span>, </span><span class="param"><span class="n">d</span><span class="p">:</span> <span class="o">~</span><span class="n">D</span>, </span><span class="param"><span class="n">pure</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span></span>)</span>
 
                 <label class="view-source-button" for="Lazy.__init__-view-source"><span>View Source</span></label>
 
@@ -468,7 +468,7 @@ arguments wrapped in Lazy instances.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">got_result</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="n"><a href="err_handling.html#MayBe">dtools.fp.err_handling.MayBe</a></span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span>:</span></span>
+        <span class="name">got_result</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="n">dtools</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">maybe</span><span class="o">.</span><span class="n">MayBe</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span>:</span></span>
 
                 <label class="view-source-button" for="Lazy.got_result-view-source"><span>View Source</span></label>
 
@@ -490,7 +490,7 @@ arguments wrapped in Lazy instances.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">got_exception</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="n"><a href="err_handling.html#MayBe">dtools.fp.err_handling.MayBe</a></span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span>:</span></span>
+        <span class="name">got_exception</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="n">dtools</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">maybe</span><span class="o">.</span><span class="n">MayBe</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span>:</span></span>
 
                 <label class="view-source-button" for="Lazy.got_exception-view-source"><span>View Source</span></label>
 
@@ -512,7 +512,7 @@ arguments wrapped in Lazy instances.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">get</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">alt</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="o">~</span><span class="n">R</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">Union</span><span class="p">[</span><span class="o">~</span><span class="n">R</span><span class="p">,</span> <span class="n">Never</span><span class="p">]</span>:</span></span>
+        <span class="name">get</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">alt</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="o">-</span><span class="n">R</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></span><span class="return-annotation">) -> <span class="n">Union</span><span class="p">[</span><span class="o">-</span><span class="n">R</span><span class="p">,</span> <span class="n">Never</span><span class="p">]</span>:</span></span>
 
                 <label class="view-source-button" for="Lazy.get-view-source"><span>View Source</span></label>
 
@@ -548,7 +548,7 @@ has already been done, its result is better than the alternate value.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">get_result</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="n"><a href="err_handling.html#MayBe">dtools.fp.err_handling.MayBe</a></span><span class="p">[</span><span class="o">~</span><span class="n">R</span><span class="p">]</span>:</span></span>
+        <span class="name">get_result</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="n">dtools</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">maybe</span><span class="o">.</span><span class="n">MayBe</span><span class="p">[</span><span class="o">-</span><span class="n">R</span><span class="p">]</span>:</span></span>
 
                 <label class="view-source-button" for="Lazy.get_result-view-source"><span>View Source</span></label>
 
@@ -572,7 +572,7 @@ has already been done, its result is better than the alternate value.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">get_exception</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="n"><a href="err_handling.html#MayBe">dtools.fp.err_handling.MayBe</a></span><span class="p">[</span><span class="ne">Exception</span><span class="p">]</span>:</span></span>
+        <span class="name">get_exception</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span></span><span class="return-annotation">) -> <span class="n">dtools</span><span class="o">.</span><span class="n">containers</span><span class="o">.</span><span class="n">maybe</span><span class="o">.</span><span class="n">MayBe</span><span class="p">[</span><span class="ne">Exception</span><span class="p">]</span>:</span></span>
 
                 <label class="view-source-button" for="Lazy.get_exception-view-source"><span>View Source</span></label>
 
@@ -597,7 +597,7 @@ has already been done, its result is better than the alternate value.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">lazy</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">~</span><span class="n">P</span><span class="p">,</span> <span class="o">~</span><span class="n">R</span><span class="p">]</span>,</span><span class="param">	<span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">P</span><span class="o">.</span><span class="n">args</span>,</span><span class="param">	<span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">P</span><span class="o">.</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="n"><a href="#Lazy">Lazy</a></span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="o">~</span><span class="n">R</span><span class="p">]</span>:</span></span>
+        <span class="name">lazy</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">~</span><span class="n">P</span><span class="p">,</span> <span class="o">-</span><span class="n">R</span><span class="p">]</span>,</span><span class="param">	<span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">P</span><span class="o">.</span><span class="n">args</span>,</span><span class="param">	<span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">P</span><span class="o">.</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="n"><a href="#Lazy">Lazy</a></span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="o">-</span><span class="n">R</span><span class="p">]</span>:</span></span>
 
                 <label class="view-source-button" for="lazy-view-source"><span>View Source</span></label>
 
@@ -647,7 +647,7 @@ of positional arguments.</p>
 <div class="attr function">
             
         <span class="def">def</span>
-        <span class="name">real_lazy</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">~</span><span class="n">P</span><span class="p">,</span> <span class="o">~</span><span class="n">R</span><span class="p">]</span>,</span><span class="param">	<span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">P</span><span class="o">.</span><span class="n">args</span>,</span><span class="param">	<span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">P</span><span class="o">.</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="n"><a href="#Lazy">Lazy</a></span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="o">~</span><span class="n">R</span><span class="p">]</span>:</span></span>
+        <span class="name">real_lazy</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[</span><span class="o">~</span><span class="n">P</span><span class="p">,</span> <span class="o">-</span><span class="n">R</span><span class="p">]</span>,</span><span class="param">	<span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">P</span><span class="o">.</span><span class="n">args</span>,</span><span class="param">	<span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">P</span><span class="o">.</span><span class="n">kwargs</span></span><span class="return-annotation">) -> <span class="n"><a href="#Lazy">Lazy</a></span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="n">typing</span><span class="o">.</span><span class="n">Any</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="o">-</span><span class="n">R</span><span class="p">]</span>:</span></span>
 
                 <label class="view-source-button" for="real_lazy-view-source"><span>View Source</span></label>
 

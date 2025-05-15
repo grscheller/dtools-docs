@@ -24,9 +24,11 @@
 
             <h2>Submodules</h2>
             <ul>
-                    <li><a href="containers/boxes.html">boxes</a></li>
+                    <li><a href="containers/box.html">box</a></li>
                     <li><a href="containers/functional_tuple.html">functional_tuple</a></li>
                     <li><a href="containers/immutable_list.html">immutable_list</a></li>
+                    <li><a href="containers/maybe.html">maybe</a></li>
+                    <li><a href="containers/xor.html">xor</a></li>
             </ul>
 
             <h2>API Documentation</h2>
@@ -50,27 +52,35 @@ dtools<wbr>.containers    </h1>
                         <div class="docstring"><h3 id="developer-tools-container-like-data-structures">Developer Tools - Container-like data structures</h3>
 
 <ul>
-<li><em>package</em> <a href="">dtools.containers</a>: Container-like data structures
+<li><em>module</em> <code><a href="">dtools.containers</a></code>: Container-like data structures
 <ul>
-<li><em>module</em> boxes: stateful containers </li>
-<li><em>module</em> immutable_list: 
+<li><em>module</em> <code>box</code>: stateful container holding at most one object</li>
+<li><em>module</em> <code>functional_tuple</code>: directly inherited from the <code>tuple</code> builtin 
+<ul>
+<li>gives <code>tuple</code> FP interface</li>
+<li>designed to be further inherited from</li>
+</ul></li>
+<li><em>module</em> <code>immutable_list</code>: 
 <ul>
 <li>hashable
 <ul>
-<li>hashability should be enforced with typing tooling
-<ul>
-<li>not yet fully tested</li>
-</ul></li>
 <li>hashability will be enforced at runtime
 <ul>
-<li>not yet fully tested</li>
+<li>should also be enforced with typing tooling (not yet fully tested)</li>
 </ul></li>
 </ul></li>
 </ul></li>
-<li><em>module</em> functional_tuple
+<li><em>module</em> <code>maybe</code>: implements the "maybe" (also called "optional") monad
 <ul>
-<li>give tuple a more FP interface</li>
-<li>more easily inheritable than from tuple directly</li>
+<li>class representing a possibly missing value</li>
+</ul></li>
+<li><em>module</em> <code>xor</code>: implements a left biased "either" monad
+<ul>
+<li>class representing either a "left" or "right" value, but not both
+<ul>
+<li>these values can be the same or different types</li>
+<li>the "left" value is taken to be the "happy path"</li>
+</ul></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -96,23 +106,27 @@ dtools<wbr>.containers    </h1>
 </span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>
 </span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a><span class="sd">&quot;&quot;&quot;### Developer Tools - Container-like data structures</span>
 </span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="sd">- *package* dtools.containers: Container-like data structures</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">  - *module* boxes: stateful containers </span>
-</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">  - *module* immutable_list: </span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">    - hashable</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="sd">      - hashability should be enforced with typing tooling</span>
-</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="sd">        - not yet fully tested</span>
-</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="sd">      - hashability will be enforced at runtime</span>
-</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="sd">        - not yet fully tested</span>
-</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="sd">  - *module* functional_tuple</span>
-</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="sd">    - give tuple a more FP interface</span>
-</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="sd">    - more easily inheritable than from tuple directly</span>
-</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>
-</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>
-</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a><span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Geoffrey R. Scheller&#39;</span>
-</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a><span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright (c) 2023-2025 Geoffrey R. Scheller&#39;</span>
-</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;Apache License 2.0&#39;</span>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="sd">- *module* `dtools.containers`: Container-like data structures</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a><span class="sd">  - *module* `box`: stateful container holding at most one object</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a><span class="sd">  - *module* `functional_tuple`: directly inherited from the `tuple` builtin </span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a><span class="sd">    - gives `tuple` FP interface</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a><span class="sd">    - designed to be further inherited from</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a><span class="sd">  - *module* `immutable_list`: </span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a><span class="sd">    - hashable</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a><span class="sd">      - hashability will be enforced at runtime</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a><span class="sd">        - should also be enforced with typing tooling (not yet fully tested)</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a><span class="sd">  - *module* `maybe`: implements the &quot;maybe&quot; (also called &quot;optional&quot;) monad</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a><span class="sd">    - class representing a possibly missing value</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a><span class="sd">  - *module* `xor`: implements a left biased &quot;either&quot; monad</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a><span class="sd">    - class representing either a &quot;left&quot; or &quot;right&quot; value, but not both</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a><span class="sd">      - these values can be the same or different types</span>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a><span class="sd">      - the &quot;left&quot; value is taken to be the &quot;happy path&quot;</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a><span class="n">__author__</span> <span class="o">=</span> <span class="s1">&#39;Geoffrey R. Scheller&#39;</span>
+</span><span id="L-36"><a href="#L-36"><span class="linenos">36</span></a><span class="n">__copyright__</span> <span class="o">=</span> <span class="s1">&#39;Copyright (c) 2023-2025 Geoffrey R. Scheller&#39;</span>
+</span><span id="L-37"><a href="#L-37"><span class="linenos">37</span></a><span class="n">__license__</span> <span class="o">=</span> <span class="s1">&#39;Apache License 2.0&#39;</span>
 </span></pre></div>
 
 
