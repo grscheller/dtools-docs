@@ -35,9 +35,9 @@ h4 {
 }
 
 dt {
-    display: inline; /* Makes the term display inline */
-    font-weight: bold; /* Optional: keeps the term bold */
-    margin-right: 10px; /* Adds space between term and description */
+    margin-left: 25px;
+    /* font-weight: bold; Optional: keeps the term bold */
+    margin-right: 5px; /* Adds space between term and description */
 }
 
 dd {
