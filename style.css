@@ -35,12 +35,12 @@ h4 {
 }
 
 dt {
+    color: #c5c9c5;
     margin-left: 25px;
-    /* font-weight: bold; Optional: keeps the term bold */
-    margin-right: 5px; /* Adds space between term and description */
+    margin-right: 5px;
 }
 
 dd {
-    display: inline; /* Makes the description display inline */
-    color: #666; /* Optional: sets a different text color for descriptions */
+    color: #939693;
+    display: inline;
 }
