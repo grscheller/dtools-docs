@@ -33,3 +33,14 @@ h3 {
 h4 {
   color: #bc8f8f;
 }
+
+dt {
+    display: inline; /* Makes the term display inline */
+    font-weight: bold; /* Optional: keeps the term bold */
+    margin-right: 10px; /* Adds space between term and description */
+}
+
+dd {
+    display: inline; /* Makes the description display inline */
+    color: #666; /* Optional: sets a different text color for descriptions */
+}
