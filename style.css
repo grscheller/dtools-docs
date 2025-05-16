@@ -37,11 +37,9 @@ h4 {
 dt {
     color: #c5c9c5;
     margin-left: 40px;
-    margin-right: 10px;
 }
 
 dd {
     color: #939693;
-    /* margin-left: 50px; */
-    display: inline;
+    margin-left: 50px;
 }
