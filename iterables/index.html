@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>dtools.iterables
+  <title>dtools.iterables</title>
   <link rel="stylesheet" href="../style.css" />
 </head>
 
@@ -13,8 +13,25 @@
     Tools for Python iterables and iterators.
   </p>
   <dl>
-    <dt>Functions for iterables: dtools.fp.iterables</dt>
-      <dd>iteration tools implemented in Python</dd>
+    <dt>Functions to concatenate iterables</dt>
+      <dd>concat: concatenate multiple iterables sequentially</dd>
+      <dd>exhaust: shuffle together multiple iterables until all are exhausted</dd>
+      <dd>merge: shuffle together multiple iterables until one is exhausted</dd>
+    <dt>Functions to drop or take values from an iterable</dt>
+      <dd>drop: return iterator with a given number of values dropped from iterable</dd>
+      <dd>drop_while: return iterator of an iterable dropping values where predicate is true</dd>
+      <dd>take: take a given number of values from an iterable</dd>
+      <dd>take_split: same as take except also return an iterator of the remaining values</dd>
+      <dd>take_while: return iterator yielding values while predicate is true</dd>
+      <dd>take_while_split: same as take_while except also return an iterator of the remaining values</dd>
+    <dt>Functions to accumulate and reduce from an iterable</dt>
+      <dd>accumulate: pure Python version of std library's itertools.accumulate</dd>
+      <dd>reducel: fold an iterable left with a function</dd>
+      <dd>foldl: fold an iterable left with a function and initial value</dd>
+      <dd>mb_fold_left: fold an iterable left with a function and optional initial value</dd>
+    <dt>safer versions of iterable reducing functions, useful with infinite iterables</dt>
+      <dd>sc_reducel: short circuit version of a left reduce</dd>
+      <dd>sc_reducer: short circuit version of a right reduce</dd>
   </dl>
   <p>
     Part of the <a href="../index.html">dtools namespace projects</a>.

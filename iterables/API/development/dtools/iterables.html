@@ -416,11 +416,11 @@ dtools<wbr>.iterables    </h1>
 </span><span id="L-291"><a href="#L-291"><span class="linenos">291</span></a>
 </span><span id="L-292"><a href="#L-292"><span class="linenos">292</span></a>
 </span><span id="L-293"><a href="#L-293"><span class="linenos">293</span></a><span class="k">def</span><span class="w"> </span><span class="nf">reducel</span><span class="p">[</span><span class="n">D</span><span class="p">](</span><span class="n">iterable</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">D</span><span class="p">],</span> <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">D</span><span class="p">,</span> <span class="n">D</span><span class="p">],</span> <span class="n">D</span><span class="p">],</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">D</span> <span class="o">|</span> <span class="n">Never</span><span class="p">:</span>
-</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Folds an iterable left with optional initial value.</span>
+</span><span id="L-294"><a href="#L-294"><span class="linenos">294</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Fold an iterable left with a function.</span>
 </span><span id="L-295"><a href="#L-295"><span class="linenos">295</span></a>
 </span><span id="L-296"><a href="#L-296"><span class="linenos">296</span></a><span class="sd">    * traditional FP type order given for function `f`</span>
-</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a><span class="sd">    * if iterable empty raises StopIteration exception</span>
-</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a><span class="sd">    * does not catch any exception `f` raises</span>
+</span><span id="L-297"><a href="#L-297"><span class="linenos">297</span></a><span class="sd">    * if iterable empty, `StopIteration` exception raised</span>
+</span><span id="L-298"><a href="#L-298"><span class="linenos">298</span></a><span class="sd">    * does not catch any exceptions `f` may raise</span>
 </span><span id="L-299"><a href="#L-299"><span class="linenos">299</span></a><span class="sd">    * never returns if `iterable` generates an infinite iterator</span>
 </span><span id="L-300"><a href="#L-300"><span class="linenos">300</span></a>
 </span><span id="L-301"><a href="#L-301"><span class="linenos">301</span></a><span class="sd">    &quot;&quot;&quot;</span>
@@ -440,10 +440,10 @@ dtools<wbr>.iterables    </h1>
 </span><span id="L-315"><a href="#L-315"><span class="linenos">315</span></a><span class="k">def</span><span class="w"> </span><span class="nf">foldl</span><span class="p">[</span><span class="n">D</span><span class="p">,</span> <span class="n">L</span><span class="p">](</span>
 </span><span id="L-316"><a href="#L-316"><span class="linenos">316</span></a>    <span class="n">iterable</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">D</span><span class="p">],</span> <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">L</span><span class="p">,</span> <span class="n">D</span><span class="p">],</span> <span class="n">L</span><span class="p">],</span> <span class="n">initial</span><span class="p">:</span> <span class="n">L</span><span class="p">,</span> <span class="o">/</span>
 </span><span id="L-317"><a href="#L-317"><span class="linenos">317</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">L</span> <span class="o">|</span> <span class="n">Never</span><span class="p">:</span>
-</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Folds an iterable left with optional initial value.</span>
+</span><span id="L-318"><a href="#L-318"><span class="linenos">318</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Folds an iterable left with a function and initial value.</span>
 </span><span id="L-319"><a href="#L-319"><span class="linenos">319</span></a>
 </span><span id="L-320"><a href="#L-320"><span class="linenos">320</span></a><span class="sd">    * traditional FP type order given for function `f`</span>
-</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a><span class="sd">    * does not catch any exception `f` may raise</span>
+</span><span id="L-321"><a href="#L-321"><span class="linenos">321</span></a><span class="sd">    * does not catch any exceptions `f` may raise</span>
 </span><span id="L-322"><a href="#L-322"><span class="linenos">322</span></a><span class="sd">    * like builtin `sum` for Python &gt;=3.8 except</span>
 </span><span id="L-323"><a href="#L-323"><span class="linenos">323</span></a><span class="sd">      - not restricted to __add__ for the folding function</span>
 </span><span id="L-324"><a href="#L-324"><span class="linenos">324</span></a><span class="sd">      - initial value required, does not default to `0` for initial value</span>
@@ -496,88 +496,87 @@ dtools<wbr>.iterables    </h1>
 </span><span id="L-371"><a href="#L-371"><span class="linenos">371</span></a>    <span class="n">include_start</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 </span><span id="L-372"><a href="#L-372"><span class="linenos">372</span></a>    <span class="n">include_stop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 </span><span id="L-373"><a href="#L-373"><span class="linenos">373</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">MB</span><span class="p">[</span><span class="n">D</span><span class="p">],</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">D</span><span class="p">]]:</span>
-</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Short circuit version of a left reduce. Useful for infinite or</span>
-</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a><span class="sd">    non-reversible iterables.</span>
-</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a>
-</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a><span class="sd">    * Behavior for default arguments will</span>
-</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a><span class="sd">      * left reduce finite iterable</span>
-</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a><span class="sd">      * start folding immediately</span>
-</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a><span class="sd">      * continue folding until end (of a possibly infinite iterable)</span>
-</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a><span class="sd">    * Callable `start` delays starting the left reduce</span>
-</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a><span class="sd">    * Callable `stop` prematurely stop the left reduce</span>
-</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a>
-</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a>    <span class="n">it_start</span> <span class="o">=</span> <span class="n">drop_while</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="n">negate</span><span class="p">(</span><span class="n">start</span><span class="p">))</span>
-</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">include_start</span><span class="p">:</span>
-</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a>        <span class="k">try</span><span class="p">:</span>
-</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a>            <span class="nb">next</span><span class="p">(</span><span class="n">it_start</span><span class="p">)</span>
-</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a>        <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a>            <span class="k">pass</span>
-</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a>    <span class="n">it_reduce</span><span class="p">,</span> <span class="n">it_rest</span> <span class="o">=</span> <span class="n">take_while_split</span><span class="p">(</span><span class="n">it_start</span><span class="p">,</span> <span class="n">negate</span><span class="p">(</span><span class="n">stop</span><span class="p">))</span>
-</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>    <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">mb_fold_left</span><span class="p">(</span><span class="n">it_reduce</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
-</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a>    <span class="k">if</span> <span class="n">include_stop</span><span class="p">:</span>
-</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a>        <span class="k">if</span> <span class="n">mb_reduced</span><span class="p">:</span>
-</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a>            <span class="k">try</span><span class="p">:</span>
-</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a>                <span class="n">last</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it_rest</span><span class="p">)</span>
-</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a>                <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">MB</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">mb_reduced</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">last</span><span class="p">))</span>
-</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a>            <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a>                <span class="k">pass</span>
-</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>            <span class="k">try</span><span class="p">:</span>
-</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>                <span class="n">last</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it_rest</span><span class="p">)</span>
-</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>                <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">MB</span><span class="p">(</span><span class="n">last</span><span class="p">)</span>
-</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>            <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>                <span class="k">pass</span>
-</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a>
-</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a>    <span class="k">return</span> <span class="p">(</span><span class="n">mb_reduced</span><span class="p">,</span> <span class="n">it_rest</span><span class="p">)</span>
+</span><span id="L-374"><a href="#L-374"><span class="linenos">374</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Short circuit version of a left reduce. Useful for infinite or iterables.</span>
+</span><span id="L-375"><a href="#L-375"><span class="linenos">375</span></a>
+</span><span id="L-376"><a href="#L-376"><span class="linenos">376</span></a><span class="sd">    * Behavior for default arguments will</span>
+</span><span id="L-377"><a href="#L-377"><span class="linenos">377</span></a><span class="sd">      * left reduce finite iterable</span>
+</span><span id="L-378"><a href="#L-378"><span class="linenos">378</span></a><span class="sd">      * start folding immediately</span>
+</span><span id="L-379"><a href="#L-379"><span class="linenos">379</span></a><span class="sd">      * continue folding until end (of a possibly infinite iterable)</span>
+</span><span id="L-380"><a href="#L-380"><span class="linenos">380</span></a><span class="sd">    * Callable `start` delays starting the left reduce</span>
+</span><span id="L-381"><a href="#L-381"><span class="linenos">381</span></a><span class="sd">    * Callable `stop` prematurely stop the left reduce</span>
+</span><span id="L-382"><a href="#L-382"><span class="linenos">382</span></a>
+</span><span id="L-383"><a href="#L-383"><span class="linenos">383</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-384"><a href="#L-384"><span class="linenos">384</span></a>    <span class="n">it_start</span> <span class="o">=</span> <span class="n">drop_while</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="n">negate</span><span class="p">(</span><span class="n">start</span><span class="p">))</span>
+</span><span id="L-385"><a href="#L-385"><span class="linenos">385</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">include_start</span><span class="p">:</span>
+</span><span id="L-386"><a href="#L-386"><span class="linenos">386</span></a>        <span class="k">try</span><span class="p">:</span>
+</span><span id="L-387"><a href="#L-387"><span class="linenos">387</span></a>            <span class="nb">next</span><span class="p">(</span><span class="n">it_start</span><span class="p">)</span>
+</span><span id="L-388"><a href="#L-388"><span class="linenos">388</span></a>        <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+</span><span id="L-389"><a href="#L-389"><span class="linenos">389</span></a>            <span class="k">pass</span>
+</span><span id="L-390"><a href="#L-390"><span class="linenos">390</span></a>    <span class="n">it_reduce</span><span class="p">,</span> <span class="n">it_rest</span> <span class="o">=</span> <span class="n">take_while_split</span><span class="p">(</span><span class="n">it_start</span><span class="p">,</span> <span class="n">negate</span><span class="p">(</span><span class="n">stop</span><span class="p">))</span>
+</span><span id="L-391"><a href="#L-391"><span class="linenos">391</span></a>    <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">mb_fold_left</span><span class="p">(</span><span class="n">it_reduce</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</span><span id="L-392"><a href="#L-392"><span class="linenos">392</span></a>    <span class="k">if</span> <span class="n">include_stop</span><span class="p">:</span>
+</span><span id="L-393"><a href="#L-393"><span class="linenos">393</span></a>        <span class="k">if</span> <span class="n">mb_reduced</span><span class="p">:</span>
+</span><span id="L-394"><a href="#L-394"><span class="linenos">394</span></a>            <span class="k">try</span><span class="p">:</span>
+</span><span id="L-395"><a href="#L-395"><span class="linenos">395</span></a>                <span class="n">last</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it_rest</span><span class="p">)</span>
+</span><span id="L-396"><a href="#L-396"><span class="linenos">396</span></a>                <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">MB</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">mb_reduced</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">last</span><span class="p">))</span>
+</span><span id="L-397"><a href="#L-397"><span class="linenos">397</span></a>            <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+</span><span id="L-398"><a href="#L-398"><span class="linenos">398</span></a>                <span class="k">pass</span>
+</span><span id="L-399"><a href="#L-399"><span class="linenos">399</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="L-400"><a href="#L-400"><span class="linenos">400</span></a>            <span class="k">try</span><span class="p">:</span>
+</span><span id="L-401"><a href="#L-401"><span class="linenos">401</span></a>                <span class="n">last</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it_rest</span><span class="p">)</span>
+</span><span id="L-402"><a href="#L-402"><span class="linenos">402</span></a>                <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">MB</span><span class="p">(</span><span class="n">last</span><span class="p">)</span>
+</span><span id="L-403"><a href="#L-403"><span class="linenos">403</span></a>            <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+</span><span id="L-404"><a href="#L-404"><span class="linenos">404</span></a>                <span class="k">pass</span>
+</span><span id="L-405"><a href="#L-405"><span class="linenos">405</span></a>
+</span><span id="L-406"><a href="#L-406"><span class="linenos">406</span></a>    <span class="k">return</span> <span class="p">(</span><span class="n">mb_reduced</span><span class="p">,</span> <span class="n">it_rest</span><span class="p">)</span>
+</span><span id="L-407"><a href="#L-407"><span class="linenos">407</span></a>
 </span><span id="L-408"><a href="#L-408"><span class="linenos">408</span></a>
-</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a>
-</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a><span class="k">def</span><span class="w"> </span><span class="nf">sc_reducer</span><span class="p">[</span><span class="n">D</span><span class="p">](</span>
-</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a>    <span class="n">iterable</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">D</span><span class="p">],</span>
-</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a>    <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">D</span><span class="p">,</span> <span class="n">D</span><span class="p">],</span> <span class="n">D</span><span class="p">],</span>
-</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a>    <span class="o">/</span><span class="p">,</span>
-</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a>    <span class="n">start</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">D</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="kc">False</span><span class="p">),</span>
-</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a>    <span class="n">stop</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">D</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="kc">False</span><span class="p">),</span>
-</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a>    <span class="n">include_start</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a>    <span class="n">include_stop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">MB</span><span class="p">[</span><span class="n">D</span><span class="p">],</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">D</span><span class="p">]]:</span>
-</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Short circuit version of a right reduce. Useful for infinite or</span>
-</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a><span class="sd">    non-reversible iterables.</span>
-</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a>
-</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a><span class="sd">    * Behavior for default arguments will</span>
-</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a><span class="sd">      * right reduce finite iterable</span>
-</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a><span class="sd">      * start reducing at end (of a possibly infinite iterable)</span>
-</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a><span class="sd">      * continue reducing right until beginning</span>
-</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a><span class="sd">    * Callable `start` prematurely starts the right reduce</span>
-</span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a><span class="sd">    * Callable `stop` prematurely stops the right reduce</span>
-</span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a>
-</span><span id="L-429"><a href="#L-429"><span class="linenos">429</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a>    <span class="n">it_start</span><span class="p">,</span> <span class="n">it_rest</span> <span class="o">=</span> <span class="n">take_while_split</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="n">negate</span><span class="p">(</span><span class="n">start</span><span class="p">))</span>
-</span><span id="L-431"><a href="#L-431"><span class="linenos">431</span></a>    <span class="n">l1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">it_start</span><span class="p">)</span>
-</span><span id="L-432"><a href="#L-432"><span class="linenos">432</span></a>    <span class="k">if</span> <span class="n">include_start</span><span class="p">:</span>
-</span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a>        <span class="k">try</span><span class="p">:</span>
-</span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a>            <span class="n">begin</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it_rest</span><span class="p">)</span>
-</span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a>        <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-</span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a>            <span class="k">pass</span>
-</span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a>            <span class="n">l1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">begin</span><span class="p">)</span>
-</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a>
-</span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a>    <span class="n">l1</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
-</span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a>    <span class="n">it_reduce</span><span class="p">,</span> <span class="n">it_stop</span> <span class="o">=</span> <span class="n">take_while_split</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">negate</span><span class="p">(</span><span class="n">stop</span><span class="p">))</span>
-</span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a>
-</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a>    <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">mb_fold_left</span><span class="p">(</span><span class="n">it_reduce</span><span class="p">,</span> <span class="n">swap</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
-</span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a>    <span class="k">if</span> <span class="n">include_stop</span><span class="p">:</span>
-</span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a>        <span class="k">try</span><span class="p">:</span>
-</span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a>            <span class="n">end</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it_stop</span><span class="p">)</span>
-</span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a>        <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-</span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a>            <span class="k">pass</span>
-</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a>            <span class="k">if</span> <span class="n">mb_reduced</span><span class="p">:</span>
-</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a>                <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">MB</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="n">mb_reduced</span><span class="o">.</span><span class="n">get</span><span class="p">()))</span>
-</span><span id="L-452"><a href="#L-452"><span class="linenos">452</span></a>            <span class="k">else</span><span class="p">:</span>
-</span><span id="L-453"><a href="#L-453"><span class="linenos">453</span></a>                <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">MB</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
-</span><span id="L-454"><a href="#L-454"><span class="linenos">454</span></a>
-</span><span id="L-455"><a href="#L-455"><span class="linenos">455</span></a>    <span class="k">return</span> <span class="p">(</span><span class="n">mb_reduced</span><span class="p">,</span> <span class="n">it_rest</span><span class="p">)</span>
+</span><span id="L-409"><a href="#L-409"><span class="linenos">409</span></a><span class="k">def</span><span class="w"> </span><span class="nf">sc_reducer</span><span class="p">[</span><span class="n">D</span><span class="p">](</span>
+</span><span id="L-410"><a href="#L-410"><span class="linenos">410</span></a>    <span class="n">iterable</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">D</span><span class="p">],</span>
+</span><span id="L-411"><a href="#L-411"><span class="linenos">411</span></a>    <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">D</span><span class="p">,</span> <span class="n">D</span><span class="p">],</span> <span class="n">D</span><span class="p">],</span>
+</span><span id="L-412"><a href="#L-412"><span class="linenos">412</span></a>    <span class="o">/</span><span class="p">,</span>
+</span><span id="L-413"><a href="#L-413"><span class="linenos">413</span></a>    <span class="n">start</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">D</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="kc">False</span><span class="p">),</span>
+</span><span id="L-414"><a href="#L-414"><span class="linenos">414</span></a>    <span class="n">stop</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">D</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="kc">False</span><span class="p">),</span>
+</span><span id="L-415"><a href="#L-415"><span class="linenos">415</span></a>    <span class="n">include_start</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+</span><span id="L-416"><a href="#L-416"><span class="linenos">416</span></a>    <span class="n">include_stop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+</span><span id="L-417"><a href="#L-417"><span class="linenos">417</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">MB</span><span class="p">[</span><span class="n">D</span><span class="p">],</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">D</span><span class="p">]]:</span>
+</span><span id="L-418"><a href="#L-418"><span class="linenos">418</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Short circuit version of a right reduce. Useful for infinite or</span>
+</span><span id="L-419"><a href="#L-419"><span class="linenos">419</span></a><span class="sd">    non-reversible iterables.</span>
+</span><span id="L-420"><a href="#L-420"><span class="linenos">420</span></a>
+</span><span id="L-421"><a href="#L-421"><span class="linenos">421</span></a><span class="sd">    * Behavior for default arguments will</span>
+</span><span id="L-422"><a href="#L-422"><span class="linenos">422</span></a><span class="sd">      * right reduce finite iterable</span>
+</span><span id="L-423"><a href="#L-423"><span class="linenos">423</span></a><span class="sd">      * start reducing at end (of a possibly infinite iterable)</span>
+</span><span id="L-424"><a href="#L-424"><span class="linenos">424</span></a><span class="sd">      * continue reducing right until beginning</span>
+</span><span id="L-425"><a href="#L-425"><span class="linenos">425</span></a><span class="sd">    * Callable `start` prematurely starts the right reduce</span>
+</span><span id="L-426"><a href="#L-426"><span class="linenos">426</span></a><span class="sd">    * Callable `stop` prematurely stops the right reduce</span>
+</span><span id="L-427"><a href="#L-427"><span class="linenos">427</span></a>
+</span><span id="L-428"><a href="#L-428"><span class="linenos">428</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="L-429"><a href="#L-429"><span class="linenos">429</span></a>    <span class="n">it_start</span><span class="p">,</span> <span class="n">it_rest</span> <span class="o">=</span> <span class="n">take_while_split</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="n">negate</span><span class="p">(</span><span class="n">start</span><span class="p">))</span>
+</span><span id="L-430"><a href="#L-430"><span class="linenos">430</span></a>    <span class="n">l1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">it_start</span><span class="p">)</span>
+</span><span id="L-431"><a href="#L-431"><span class="linenos">431</span></a>    <span class="k">if</span> <span class="n">include_start</span><span class="p">:</span>
+</span><span id="L-432"><a href="#L-432"><span class="linenos">432</span></a>        <span class="k">try</span><span class="p">:</span>
+</span><span id="L-433"><a href="#L-433"><span class="linenos">433</span></a>            <span class="n">begin</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it_rest</span><span class="p">)</span>
+</span><span id="L-434"><a href="#L-434"><span class="linenos">434</span></a>        <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+</span><span id="L-435"><a href="#L-435"><span class="linenos">435</span></a>            <span class="k">pass</span>
+</span><span id="L-436"><a href="#L-436"><span class="linenos">436</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="L-437"><a href="#L-437"><span class="linenos">437</span></a>            <span class="n">l1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">begin</span><span class="p">)</span>
+</span><span id="L-438"><a href="#L-438"><span class="linenos">438</span></a>
+</span><span id="L-439"><a href="#L-439"><span class="linenos">439</span></a>    <span class="n">l1</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+</span><span id="L-440"><a href="#L-440"><span class="linenos">440</span></a>    <span class="n">it_reduce</span><span class="p">,</span> <span class="n">it_stop</span> <span class="o">=</span> <span class="n">take_while_split</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">negate</span><span class="p">(</span><span class="n">stop</span><span class="p">))</span>
+</span><span id="L-441"><a href="#L-441"><span class="linenos">441</span></a>
+</span><span id="L-442"><a href="#L-442"><span class="linenos">442</span></a>    <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">mb_fold_left</span><span class="p">(</span><span class="n">it_reduce</span><span class="p">,</span> <span class="n">swap</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+</span><span id="L-443"><a href="#L-443"><span class="linenos">443</span></a>    <span class="k">if</span> <span class="n">include_stop</span><span class="p">:</span>
+</span><span id="L-444"><a href="#L-444"><span class="linenos">444</span></a>        <span class="k">try</span><span class="p">:</span>
+</span><span id="L-445"><a href="#L-445"><span class="linenos">445</span></a>            <span class="n">end</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it_stop</span><span class="p">)</span>
+</span><span id="L-446"><a href="#L-446"><span class="linenos">446</span></a>        <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+</span><span id="L-447"><a href="#L-447"><span class="linenos">447</span></a>            <span class="k">pass</span>
+</span><span id="L-448"><a href="#L-448"><span class="linenos">448</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="L-449"><a href="#L-449"><span class="linenos">449</span></a>            <span class="k">if</span> <span class="n">mb_reduced</span><span class="p">:</span>
+</span><span id="L-450"><a href="#L-450"><span class="linenos">450</span></a>                <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">MB</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="n">mb_reduced</span><span class="o">.</span><span class="n">get</span><span class="p">()))</span>
+</span><span id="L-451"><a href="#L-451"><span class="linenos">451</span></a>            <span class="k">else</span><span class="p">:</span>
+</span><span id="L-452"><a href="#L-452"><span class="linenos">452</span></a>                <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">MB</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
+</span><span id="L-453"><a href="#L-453"><span class="linenos">453</span></a>
+</span><span id="L-454"><a href="#L-454"><span class="linenos">454</span></a>    <span class="k">return</span> <span class="p">(</span><span class="n">mb_reduced</span><span class="p">,</span> <span class="n">it_rest</span><span class="p">)</span>
 </span></pre></div>
 
 
@@ -1092,10 +1091,10 @@ dtools<wbr>.iterables    </h1>
             <div class="pdoc-code codehilite"><pre><span></span><span id="foldl-316"><a href="#foldl-316"><span class="linenos">316</span></a><span class="k">def</span><span class="w"> </span><span class="nf">foldl</span><span class="p">[</span><span class="n">D</span><span class="p">,</span> <span class="n">L</span><span class="p">](</span>
 </span><span id="foldl-317"><a href="#foldl-317"><span class="linenos">317</span></a>    <span class="n">iterable</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">D</span><span class="p">],</span> <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">L</span><span class="p">,</span> <span class="n">D</span><span class="p">],</span> <span class="n">L</span><span class="p">],</span> <span class="n">initial</span><span class="p">:</span> <span class="n">L</span><span class="p">,</span> <span class="o">/</span>
 </span><span id="foldl-318"><a href="#foldl-318"><span class="linenos">318</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">L</span> <span class="o">|</span> <span class="n">Never</span><span class="p">:</span>
-</span><span id="foldl-319"><a href="#foldl-319"><span class="linenos">319</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Folds an iterable left with optional initial value.</span>
+</span><span id="foldl-319"><a href="#foldl-319"><span class="linenos">319</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Folds an iterable left with a function and initial value.</span>
 </span><span id="foldl-320"><a href="#foldl-320"><span class="linenos">320</span></a>
 </span><span id="foldl-321"><a href="#foldl-321"><span class="linenos">321</span></a><span class="sd">    * traditional FP type order given for function `f`</span>
-</span><span id="foldl-322"><a href="#foldl-322"><span class="linenos">322</span></a><span class="sd">    * does not catch any exception `f` may raise</span>
+</span><span id="foldl-322"><a href="#foldl-322"><span class="linenos">322</span></a><span class="sd">    * does not catch any exceptions `f` may raise</span>
 </span><span id="foldl-323"><a href="#foldl-323"><span class="linenos">323</span></a><span class="sd">    * like builtin `sum` for Python &gt;=3.8 except</span>
 </span><span id="foldl-324"><a href="#foldl-324"><span class="linenos">324</span></a><span class="sd">      - not restricted to __add__ for the folding function</span>
 </span><span id="foldl-325"><a href="#foldl-325"><span class="linenos">325</span></a><span class="sd">      - initial value required, does not default to `0` for initial value</span>
@@ -1110,11 +1109,11 @@ dtools<wbr>.iterables    </h1>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Folds an iterable left with optional initial value.</p>
+            <div class="docstring"><p>Folds an iterable left with a function and initial value.</p>
 
 <ul>
 <li>traditional FP type order given for function <code>f</code></li>
-<li>does not catch any exception <code>f</code> may raise</li>
+<li>does not catch any exceptions <code>f</code> may raise</li>
 <li>like builtin <code>sum</code> for Python &gt;=3.8 except
 <ul>
 <li>not restricted to __add__ for the folding function</li>
@@ -1193,11 +1192,11 @@ dtools<wbr>.iterables    </h1>
     </div>
     <a class="headerlink" href="#reducel"></a>
             <div class="pdoc-code codehilite"><pre><span></span><span id="reducel-294"><a href="#reducel-294"><span class="linenos">294</span></a><span class="k">def</span><span class="w"> </span><span class="nf">reducel</span><span class="p">[</span><span class="n">D</span><span class="p">](</span><span class="n">iterable</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">D</span><span class="p">],</span> <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">D</span><span class="p">,</span> <span class="n">D</span><span class="p">],</span> <span class="n">D</span><span class="p">],</span> <span class="o">/</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">D</span> <span class="o">|</span> <span class="n">Never</span><span class="p">:</span>
-</span><span id="reducel-295"><a href="#reducel-295"><span class="linenos">295</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Folds an iterable left with optional initial value.</span>
+</span><span id="reducel-295"><a href="#reducel-295"><span class="linenos">295</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Fold an iterable left with a function.</span>
 </span><span id="reducel-296"><a href="#reducel-296"><span class="linenos">296</span></a>
 </span><span id="reducel-297"><a href="#reducel-297"><span class="linenos">297</span></a><span class="sd">    * traditional FP type order given for function `f`</span>
-</span><span id="reducel-298"><a href="#reducel-298"><span class="linenos">298</span></a><span class="sd">    * if iterable empty raises StopIteration exception</span>
-</span><span id="reducel-299"><a href="#reducel-299"><span class="linenos">299</span></a><span class="sd">    * does not catch any exception `f` raises</span>
+</span><span id="reducel-298"><a href="#reducel-298"><span class="linenos">298</span></a><span class="sd">    * if iterable empty, `StopIteration` exception raised</span>
+</span><span id="reducel-299"><a href="#reducel-299"><span class="linenos">299</span></a><span class="sd">    * does not catch any exceptions `f` may raise</span>
 </span><span id="reducel-300"><a href="#reducel-300"><span class="linenos">300</span></a><span class="sd">    * never returns if `iterable` generates an infinite iterator</span>
 </span><span id="reducel-301"><a href="#reducel-301"><span class="linenos">301</span></a>
 </span><span id="reducel-302"><a href="#reducel-302"><span class="linenos">302</span></a><span class="sd">    &quot;&quot;&quot;</span>
@@ -1215,12 +1214,12 @@ dtools<wbr>.iterables    </h1>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Folds an iterable left with optional initial value.</p>
+            <div class="docstring"><p>Fold an iterable left with a function.</p>
 
 <ul>
 <li>traditional FP type order given for function <code>f</code></li>
-<li>if iterable empty raises StopIteration exception</li>
-<li>does not catch any exception <code>f</code> raises</li>
+<li>if iterable empty, <code>StopIteration</code> exception raised</li>
+<li>does not catch any exceptions <code>f</code> may raise</li>
 <li>never returns if <code>iterable</code> generates an infinite iterator</li>
 </ul>
 </div>
@@ -1247,45 +1246,43 @@ dtools<wbr>.iterables    </h1>
 </span><span id="sc_reducel-372"><a href="#sc_reducel-372"><span class="linenos">372</span></a>    <span class="n">include_start</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 </span><span id="sc_reducel-373"><a href="#sc_reducel-373"><span class="linenos">373</span></a>    <span class="n">include_stop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 </span><span id="sc_reducel-374"><a href="#sc_reducel-374"><span class="linenos">374</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">MB</span><span class="p">[</span><span class="n">D</span><span class="p">],</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">D</span><span class="p">]]:</span>
-</span><span id="sc_reducel-375"><a href="#sc_reducel-375"><span class="linenos">375</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Short circuit version of a left reduce. Useful for infinite or</span>
-</span><span id="sc_reducel-376"><a href="#sc_reducel-376"><span class="linenos">376</span></a><span class="sd">    non-reversible iterables.</span>
-</span><span id="sc_reducel-377"><a href="#sc_reducel-377"><span class="linenos">377</span></a>
-</span><span id="sc_reducel-378"><a href="#sc_reducel-378"><span class="linenos">378</span></a><span class="sd">    * Behavior for default arguments will</span>
-</span><span id="sc_reducel-379"><a href="#sc_reducel-379"><span class="linenos">379</span></a><span class="sd">      * left reduce finite iterable</span>
-</span><span id="sc_reducel-380"><a href="#sc_reducel-380"><span class="linenos">380</span></a><span class="sd">      * start folding immediately</span>
-</span><span id="sc_reducel-381"><a href="#sc_reducel-381"><span class="linenos">381</span></a><span class="sd">      * continue folding until end (of a possibly infinite iterable)</span>
-</span><span id="sc_reducel-382"><a href="#sc_reducel-382"><span class="linenos">382</span></a><span class="sd">    * Callable `start` delays starting the left reduce</span>
-</span><span id="sc_reducel-383"><a href="#sc_reducel-383"><span class="linenos">383</span></a><span class="sd">    * Callable `stop` prematurely stop the left reduce</span>
-</span><span id="sc_reducel-384"><a href="#sc_reducel-384"><span class="linenos">384</span></a>
-</span><span id="sc_reducel-385"><a href="#sc_reducel-385"><span class="linenos">385</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="sc_reducel-386"><a href="#sc_reducel-386"><span class="linenos">386</span></a>    <span class="n">it_start</span> <span class="o">=</span> <span class="n">drop_while</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="n">negate</span><span class="p">(</span><span class="n">start</span><span class="p">))</span>
-</span><span id="sc_reducel-387"><a href="#sc_reducel-387"><span class="linenos">387</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">include_start</span><span class="p">:</span>
-</span><span id="sc_reducel-388"><a href="#sc_reducel-388"><span class="linenos">388</span></a>        <span class="k">try</span><span class="p">:</span>
-</span><span id="sc_reducel-389"><a href="#sc_reducel-389"><span class="linenos">389</span></a>            <span class="nb">next</span><span class="p">(</span><span class="n">it_start</span><span class="p">)</span>
-</span><span id="sc_reducel-390"><a href="#sc_reducel-390"><span class="linenos">390</span></a>        <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-</span><span id="sc_reducel-391"><a href="#sc_reducel-391"><span class="linenos">391</span></a>            <span class="k">pass</span>
-</span><span id="sc_reducel-392"><a href="#sc_reducel-392"><span class="linenos">392</span></a>    <span class="n">it_reduce</span><span class="p">,</span> <span class="n">it_rest</span> <span class="o">=</span> <span class="n">take_while_split</span><span class="p">(</span><span class="n">it_start</span><span class="p">,</span> <span class="n">negate</span><span class="p">(</span><span class="n">stop</span><span class="p">))</span>
-</span><span id="sc_reducel-393"><a href="#sc_reducel-393"><span class="linenos">393</span></a>    <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">mb_fold_left</span><span class="p">(</span><span class="n">it_reduce</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
-</span><span id="sc_reducel-394"><a href="#sc_reducel-394"><span class="linenos">394</span></a>    <span class="k">if</span> <span class="n">include_stop</span><span class="p">:</span>
-</span><span id="sc_reducel-395"><a href="#sc_reducel-395"><span class="linenos">395</span></a>        <span class="k">if</span> <span class="n">mb_reduced</span><span class="p">:</span>
-</span><span id="sc_reducel-396"><a href="#sc_reducel-396"><span class="linenos">396</span></a>            <span class="k">try</span><span class="p">:</span>
-</span><span id="sc_reducel-397"><a href="#sc_reducel-397"><span class="linenos">397</span></a>                <span class="n">last</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it_rest</span><span class="p">)</span>
-</span><span id="sc_reducel-398"><a href="#sc_reducel-398"><span class="linenos">398</span></a>                <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">MB</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">mb_reduced</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">last</span><span class="p">))</span>
-</span><span id="sc_reducel-399"><a href="#sc_reducel-399"><span class="linenos">399</span></a>            <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-</span><span id="sc_reducel-400"><a href="#sc_reducel-400"><span class="linenos">400</span></a>                <span class="k">pass</span>
-</span><span id="sc_reducel-401"><a href="#sc_reducel-401"><span class="linenos">401</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="sc_reducel-402"><a href="#sc_reducel-402"><span class="linenos">402</span></a>            <span class="k">try</span><span class="p">:</span>
-</span><span id="sc_reducel-403"><a href="#sc_reducel-403"><span class="linenos">403</span></a>                <span class="n">last</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it_rest</span><span class="p">)</span>
-</span><span id="sc_reducel-404"><a href="#sc_reducel-404"><span class="linenos">404</span></a>                <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">MB</span><span class="p">(</span><span class="n">last</span><span class="p">)</span>
-</span><span id="sc_reducel-405"><a href="#sc_reducel-405"><span class="linenos">405</span></a>            <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-</span><span id="sc_reducel-406"><a href="#sc_reducel-406"><span class="linenos">406</span></a>                <span class="k">pass</span>
-</span><span id="sc_reducel-407"><a href="#sc_reducel-407"><span class="linenos">407</span></a>
-</span><span id="sc_reducel-408"><a href="#sc_reducel-408"><span class="linenos">408</span></a>    <span class="k">return</span> <span class="p">(</span><span class="n">mb_reduced</span><span class="p">,</span> <span class="n">it_rest</span><span class="p">)</span>
+</span><span id="sc_reducel-375"><a href="#sc_reducel-375"><span class="linenos">375</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Short circuit version of a left reduce. Useful for infinite or iterables.</span>
+</span><span id="sc_reducel-376"><a href="#sc_reducel-376"><span class="linenos">376</span></a>
+</span><span id="sc_reducel-377"><a href="#sc_reducel-377"><span class="linenos">377</span></a><span class="sd">    * Behavior for default arguments will</span>
+</span><span id="sc_reducel-378"><a href="#sc_reducel-378"><span class="linenos">378</span></a><span class="sd">      * left reduce finite iterable</span>
+</span><span id="sc_reducel-379"><a href="#sc_reducel-379"><span class="linenos">379</span></a><span class="sd">      * start folding immediately</span>
+</span><span id="sc_reducel-380"><a href="#sc_reducel-380"><span class="linenos">380</span></a><span class="sd">      * continue folding until end (of a possibly infinite iterable)</span>
+</span><span id="sc_reducel-381"><a href="#sc_reducel-381"><span class="linenos">381</span></a><span class="sd">    * Callable `start` delays starting the left reduce</span>
+</span><span id="sc_reducel-382"><a href="#sc_reducel-382"><span class="linenos">382</span></a><span class="sd">    * Callable `stop` prematurely stop the left reduce</span>
+</span><span id="sc_reducel-383"><a href="#sc_reducel-383"><span class="linenos">383</span></a>
+</span><span id="sc_reducel-384"><a href="#sc_reducel-384"><span class="linenos">384</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="sc_reducel-385"><a href="#sc_reducel-385"><span class="linenos">385</span></a>    <span class="n">it_start</span> <span class="o">=</span> <span class="n">drop_while</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="n">negate</span><span class="p">(</span><span class="n">start</span><span class="p">))</span>
+</span><span id="sc_reducel-386"><a href="#sc_reducel-386"><span class="linenos">386</span></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">include_start</span><span class="p">:</span>
+</span><span id="sc_reducel-387"><a href="#sc_reducel-387"><span class="linenos">387</span></a>        <span class="k">try</span><span class="p">:</span>
+</span><span id="sc_reducel-388"><a href="#sc_reducel-388"><span class="linenos">388</span></a>            <span class="nb">next</span><span class="p">(</span><span class="n">it_start</span><span class="p">)</span>
+</span><span id="sc_reducel-389"><a href="#sc_reducel-389"><span class="linenos">389</span></a>        <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+</span><span id="sc_reducel-390"><a href="#sc_reducel-390"><span class="linenos">390</span></a>            <span class="k">pass</span>
+</span><span id="sc_reducel-391"><a href="#sc_reducel-391"><span class="linenos">391</span></a>    <span class="n">it_reduce</span><span class="p">,</span> <span class="n">it_rest</span> <span class="o">=</span> <span class="n">take_while_split</span><span class="p">(</span><span class="n">it_start</span><span class="p">,</span> <span class="n">negate</span><span class="p">(</span><span class="n">stop</span><span class="p">))</span>
+</span><span id="sc_reducel-392"><a href="#sc_reducel-392"><span class="linenos">392</span></a>    <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">mb_fold_left</span><span class="p">(</span><span class="n">it_reduce</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</span><span id="sc_reducel-393"><a href="#sc_reducel-393"><span class="linenos">393</span></a>    <span class="k">if</span> <span class="n">include_stop</span><span class="p">:</span>
+</span><span id="sc_reducel-394"><a href="#sc_reducel-394"><span class="linenos">394</span></a>        <span class="k">if</span> <span class="n">mb_reduced</span><span class="p">:</span>
+</span><span id="sc_reducel-395"><a href="#sc_reducel-395"><span class="linenos">395</span></a>            <span class="k">try</span><span class="p">:</span>
+</span><span id="sc_reducel-396"><a href="#sc_reducel-396"><span class="linenos">396</span></a>                <span class="n">last</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it_rest</span><span class="p">)</span>
+</span><span id="sc_reducel-397"><a href="#sc_reducel-397"><span class="linenos">397</span></a>                <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">MB</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">mb_reduced</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">last</span><span class="p">))</span>
+</span><span id="sc_reducel-398"><a href="#sc_reducel-398"><span class="linenos">398</span></a>            <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+</span><span id="sc_reducel-399"><a href="#sc_reducel-399"><span class="linenos">399</span></a>                <span class="k">pass</span>
+</span><span id="sc_reducel-400"><a href="#sc_reducel-400"><span class="linenos">400</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="sc_reducel-401"><a href="#sc_reducel-401"><span class="linenos">401</span></a>            <span class="k">try</span><span class="p">:</span>
+</span><span id="sc_reducel-402"><a href="#sc_reducel-402"><span class="linenos">402</span></a>                <span class="n">last</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it_rest</span><span class="p">)</span>
+</span><span id="sc_reducel-403"><a href="#sc_reducel-403"><span class="linenos">403</span></a>                <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">MB</span><span class="p">(</span><span class="n">last</span><span class="p">)</span>
+</span><span id="sc_reducel-404"><a href="#sc_reducel-404"><span class="linenos">404</span></a>            <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+</span><span id="sc_reducel-405"><a href="#sc_reducel-405"><span class="linenos">405</span></a>                <span class="k">pass</span>
+</span><span id="sc_reducel-406"><a href="#sc_reducel-406"><span class="linenos">406</span></a>
+</span><span id="sc_reducel-407"><a href="#sc_reducel-407"><span class="linenos">407</span></a>    <span class="k">return</span> <span class="p">(</span><span class="n">mb_reduced</span><span class="p">,</span> <span class="n">it_rest</span><span class="p">)</span>
 </span></pre></div>
 
 
-            <div class="docstring"><p>Short circuit version of a left reduce. Useful for infinite or
-non-reversible iterables.</p>
+            <div class="docstring"><p>Short circuit version of a left reduce. Useful for infinite or iterables.</p>
 
 <ul>
 <li>Behavior for default arguments will
@@ -1312,52 +1309,52 @@ non-reversible iterables.</p>
 
     </div>
     <a class="headerlink" href="#sc_reducer"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="sc_reducer-411"><a href="#sc_reducer-411"><span class="linenos">411</span></a><span class="k">def</span><span class="w"> </span><span class="nf">sc_reducer</span><span class="p">[</span><span class="n">D</span><span class="p">](</span>
-</span><span id="sc_reducer-412"><a href="#sc_reducer-412"><span class="linenos">412</span></a>    <span class="n">iterable</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">D</span><span class="p">],</span>
-</span><span id="sc_reducer-413"><a href="#sc_reducer-413"><span class="linenos">413</span></a>    <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">D</span><span class="p">,</span> <span class="n">D</span><span class="p">],</span> <span class="n">D</span><span class="p">],</span>
-</span><span id="sc_reducer-414"><a href="#sc_reducer-414"><span class="linenos">414</span></a>    <span class="o">/</span><span class="p">,</span>
-</span><span id="sc_reducer-415"><a href="#sc_reducer-415"><span class="linenos">415</span></a>    <span class="n">start</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">D</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="kc">False</span><span class="p">),</span>
-</span><span id="sc_reducer-416"><a href="#sc_reducer-416"><span class="linenos">416</span></a>    <span class="n">stop</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">D</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="kc">False</span><span class="p">),</span>
-</span><span id="sc_reducer-417"><a href="#sc_reducer-417"><span class="linenos">417</span></a>    <span class="n">include_start</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-</span><span id="sc_reducer-418"><a href="#sc_reducer-418"><span class="linenos">418</span></a>    <span class="n">include_stop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-</span><span id="sc_reducer-419"><a href="#sc_reducer-419"><span class="linenos">419</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">MB</span><span class="p">[</span><span class="n">D</span><span class="p">],</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">D</span><span class="p">]]:</span>
-</span><span id="sc_reducer-420"><a href="#sc_reducer-420"><span class="linenos">420</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Short circuit version of a right reduce. Useful for infinite or</span>
-</span><span id="sc_reducer-421"><a href="#sc_reducer-421"><span class="linenos">421</span></a><span class="sd">    non-reversible iterables.</span>
-</span><span id="sc_reducer-422"><a href="#sc_reducer-422"><span class="linenos">422</span></a>
-</span><span id="sc_reducer-423"><a href="#sc_reducer-423"><span class="linenos">423</span></a><span class="sd">    * Behavior for default arguments will</span>
-</span><span id="sc_reducer-424"><a href="#sc_reducer-424"><span class="linenos">424</span></a><span class="sd">      * right reduce finite iterable</span>
-</span><span id="sc_reducer-425"><a href="#sc_reducer-425"><span class="linenos">425</span></a><span class="sd">      * start reducing at end (of a possibly infinite iterable)</span>
-</span><span id="sc_reducer-426"><a href="#sc_reducer-426"><span class="linenos">426</span></a><span class="sd">      * continue reducing right until beginning</span>
-</span><span id="sc_reducer-427"><a href="#sc_reducer-427"><span class="linenos">427</span></a><span class="sd">    * Callable `start` prematurely starts the right reduce</span>
-</span><span id="sc_reducer-428"><a href="#sc_reducer-428"><span class="linenos">428</span></a><span class="sd">    * Callable `stop` prematurely stops the right reduce</span>
-</span><span id="sc_reducer-429"><a href="#sc_reducer-429"><span class="linenos">429</span></a>
-</span><span id="sc_reducer-430"><a href="#sc_reducer-430"><span class="linenos">430</span></a><span class="sd">    &quot;&quot;&quot;</span>
-</span><span id="sc_reducer-431"><a href="#sc_reducer-431"><span class="linenos">431</span></a>    <span class="n">it_start</span><span class="p">,</span> <span class="n">it_rest</span> <span class="o">=</span> <span class="n">take_while_split</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="n">negate</span><span class="p">(</span><span class="n">start</span><span class="p">))</span>
-</span><span id="sc_reducer-432"><a href="#sc_reducer-432"><span class="linenos">432</span></a>    <span class="n">l1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">it_start</span><span class="p">)</span>
-</span><span id="sc_reducer-433"><a href="#sc_reducer-433"><span class="linenos">433</span></a>    <span class="k">if</span> <span class="n">include_start</span><span class="p">:</span>
-</span><span id="sc_reducer-434"><a href="#sc_reducer-434"><span class="linenos">434</span></a>        <span class="k">try</span><span class="p">:</span>
-</span><span id="sc_reducer-435"><a href="#sc_reducer-435"><span class="linenos">435</span></a>            <span class="n">begin</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it_rest</span><span class="p">)</span>
-</span><span id="sc_reducer-436"><a href="#sc_reducer-436"><span class="linenos">436</span></a>        <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-</span><span id="sc_reducer-437"><a href="#sc_reducer-437"><span class="linenos">437</span></a>            <span class="k">pass</span>
-</span><span id="sc_reducer-438"><a href="#sc_reducer-438"><span class="linenos">438</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="sc_reducer-439"><a href="#sc_reducer-439"><span class="linenos">439</span></a>            <span class="n">l1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">begin</span><span class="p">)</span>
-</span><span id="sc_reducer-440"><a href="#sc_reducer-440"><span class="linenos">440</span></a>
-</span><span id="sc_reducer-441"><a href="#sc_reducer-441"><span class="linenos">441</span></a>    <span class="n">l1</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
-</span><span id="sc_reducer-442"><a href="#sc_reducer-442"><span class="linenos">442</span></a>    <span class="n">it_reduce</span><span class="p">,</span> <span class="n">it_stop</span> <span class="o">=</span> <span class="n">take_while_split</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">negate</span><span class="p">(</span><span class="n">stop</span><span class="p">))</span>
-</span><span id="sc_reducer-443"><a href="#sc_reducer-443"><span class="linenos">443</span></a>
-</span><span id="sc_reducer-444"><a href="#sc_reducer-444"><span class="linenos">444</span></a>    <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">mb_fold_left</span><span class="p">(</span><span class="n">it_reduce</span><span class="p">,</span> <span class="n">swap</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
-</span><span id="sc_reducer-445"><a href="#sc_reducer-445"><span class="linenos">445</span></a>    <span class="k">if</span> <span class="n">include_stop</span><span class="p">:</span>
-</span><span id="sc_reducer-446"><a href="#sc_reducer-446"><span class="linenos">446</span></a>        <span class="k">try</span><span class="p">:</span>
-</span><span id="sc_reducer-447"><a href="#sc_reducer-447"><span class="linenos">447</span></a>            <span class="n">end</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it_stop</span><span class="p">)</span>
-</span><span id="sc_reducer-448"><a href="#sc_reducer-448"><span class="linenos">448</span></a>        <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
-</span><span id="sc_reducer-449"><a href="#sc_reducer-449"><span class="linenos">449</span></a>            <span class="k">pass</span>
-</span><span id="sc_reducer-450"><a href="#sc_reducer-450"><span class="linenos">450</span></a>        <span class="k">else</span><span class="p">:</span>
-</span><span id="sc_reducer-451"><a href="#sc_reducer-451"><span class="linenos">451</span></a>            <span class="k">if</span> <span class="n">mb_reduced</span><span class="p">:</span>
-</span><span id="sc_reducer-452"><a href="#sc_reducer-452"><span class="linenos">452</span></a>                <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">MB</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="n">mb_reduced</span><span class="o">.</span><span class="n">get</span><span class="p">()))</span>
-</span><span id="sc_reducer-453"><a href="#sc_reducer-453"><span class="linenos">453</span></a>            <span class="k">else</span><span class="p">:</span>
-</span><span id="sc_reducer-454"><a href="#sc_reducer-454"><span class="linenos">454</span></a>                <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">MB</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
-</span><span id="sc_reducer-455"><a href="#sc_reducer-455"><span class="linenos">455</span></a>
-</span><span id="sc_reducer-456"><a href="#sc_reducer-456"><span class="linenos">456</span></a>    <span class="k">return</span> <span class="p">(</span><span class="n">mb_reduced</span><span class="p">,</span> <span class="n">it_rest</span><span class="p">)</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="sc_reducer-410"><a href="#sc_reducer-410"><span class="linenos">410</span></a><span class="k">def</span><span class="w"> </span><span class="nf">sc_reducer</span><span class="p">[</span><span class="n">D</span><span class="p">](</span>
+</span><span id="sc_reducer-411"><a href="#sc_reducer-411"><span class="linenos">411</span></a>    <span class="n">iterable</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">D</span><span class="p">],</span>
+</span><span id="sc_reducer-412"><a href="#sc_reducer-412"><span class="linenos">412</span></a>    <span class="n">f</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">D</span><span class="p">,</span> <span class="n">D</span><span class="p">],</span> <span class="n">D</span><span class="p">],</span>
+</span><span id="sc_reducer-413"><a href="#sc_reducer-413"><span class="linenos">413</span></a>    <span class="o">/</span><span class="p">,</span>
+</span><span id="sc_reducer-414"><a href="#sc_reducer-414"><span class="linenos">414</span></a>    <span class="n">start</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">D</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="kc">False</span><span class="p">),</span>
+</span><span id="sc_reducer-415"><a href="#sc_reducer-415"><span class="linenos">415</span></a>    <span class="n">stop</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">D</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="kc">False</span><span class="p">),</span>
+</span><span id="sc_reducer-416"><a href="#sc_reducer-416"><span class="linenos">416</span></a>    <span class="n">include_start</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+</span><span id="sc_reducer-417"><a href="#sc_reducer-417"><span class="linenos">417</span></a>    <span class="n">include_stop</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+</span><span id="sc_reducer-418"><a href="#sc_reducer-418"><span class="linenos">418</span></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">MB</span><span class="p">[</span><span class="n">D</span><span class="p">],</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">D</span><span class="p">]]:</span>
+</span><span id="sc_reducer-419"><a href="#sc_reducer-419"><span class="linenos">419</span></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Short circuit version of a right reduce. Useful for infinite or</span>
+</span><span id="sc_reducer-420"><a href="#sc_reducer-420"><span class="linenos">420</span></a><span class="sd">    non-reversible iterables.</span>
+</span><span id="sc_reducer-421"><a href="#sc_reducer-421"><span class="linenos">421</span></a>
+</span><span id="sc_reducer-422"><a href="#sc_reducer-422"><span class="linenos">422</span></a><span class="sd">    * Behavior for default arguments will</span>
+</span><span id="sc_reducer-423"><a href="#sc_reducer-423"><span class="linenos">423</span></a><span class="sd">      * right reduce finite iterable</span>
+</span><span id="sc_reducer-424"><a href="#sc_reducer-424"><span class="linenos">424</span></a><span class="sd">      * start reducing at end (of a possibly infinite iterable)</span>
+</span><span id="sc_reducer-425"><a href="#sc_reducer-425"><span class="linenos">425</span></a><span class="sd">      * continue reducing right until beginning</span>
+</span><span id="sc_reducer-426"><a href="#sc_reducer-426"><span class="linenos">426</span></a><span class="sd">    * Callable `start` prematurely starts the right reduce</span>
+</span><span id="sc_reducer-427"><a href="#sc_reducer-427"><span class="linenos">427</span></a><span class="sd">    * Callable `stop` prematurely stops the right reduce</span>
+</span><span id="sc_reducer-428"><a href="#sc_reducer-428"><span class="linenos">428</span></a>
+</span><span id="sc_reducer-429"><a href="#sc_reducer-429"><span class="linenos">429</span></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="sc_reducer-430"><a href="#sc_reducer-430"><span class="linenos">430</span></a>    <span class="n">it_start</span><span class="p">,</span> <span class="n">it_rest</span> <span class="o">=</span> <span class="n">take_while_split</span><span class="p">(</span><span class="n">iterable</span><span class="p">,</span> <span class="n">negate</span><span class="p">(</span><span class="n">start</span><span class="p">))</span>
+</span><span id="sc_reducer-431"><a href="#sc_reducer-431"><span class="linenos">431</span></a>    <span class="n">l1</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">it_start</span><span class="p">)</span>
+</span><span id="sc_reducer-432"><a href="#sc_reducer-432"><span class="linenos">432</span></a>    <span class="k">if</span> <span class="n">include_start</span><span class="p">:</span>
+</span><span id="sc_reducer-433"><a href="#sc_reducer-433"><span class="linenos">433</span></a>        <span class="k">try</span><span class="p">:</span>
+</span><span id="sc_reducer-434"><a href="#sc_reducer-434"><span class="linenos">434</span></a>            <span class="n">begin</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it_rest</span><span class="p">)</span>
+</span><span id="sc_reducer-435"><a href="#sc_reducer-435"><span class="linenos">435</span></a>        <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+</span><span id="sc_reducer-436"><a href="#sc_reducer-436"><span class="linenos">436</span></a>            <span class="k">pass</span>
+</span><span id="sc_reducer-437"><a href="#sc_reducer-437"><span class="linenos">437</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="sc_reducer-438"><a href="#sc_reducer-438"><span class="linenos">438</span></a>            <span class="n">l1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">begin</span><span class="p">)</span>
+</span><span id="sc_reducer-439"><a href="#sc_reducer-439"><span class="linenos">439</span></a>
+</span><span id="sc_reducer-440"><a href="#sc_reducer-440"><span class="linenos">440</span></a>    <span class="n">l1</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+</span><span id="sc_reducer-441"><a href="#sc_reducer-441"><span class="linenos">441</span></a>    <span class="n">it_reduce</span><span class="p">,</span> <span class="n">it_stop</span> <span class="o">=</span> <span class="n">take_while_split</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span> <span class="n">negate</span><span class="p">(</span><span class="n">stop</span><span class="p">))</span>
+</span><span id="sc_reducer-442"><a href="#sc_reducer-442"><span class="linenos">442</span></a>
+</span><span id="sc_reducer-443"><a href="#sc_reducer-443"><span class="linenos">443</span></a>    <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">mb_fold_left</span><span class="p">(</span><span class="n">it_reduce</span><span class="p">,</span> <span class="n">swap</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+</span><span id="sc_reducer-444"><a href="#sc_reducer-444"><span class="linenos">444</span></a>    <span class="k">if</span> <span class="n">include_stop</span><span class="p">:</span>
+</span><span id="sc_reducer-445"><a href="#sc_reducer-445"><span class="linenos">445</span></a>        <span class="k">try</span><span class="p">:</span>
+</span><span id="sc_reducer-446"><a href="#sc_reducer-446"><span class="linenos">446</span></a>            <span class="n">end</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">it_stop</span><span class="p">)</span>
+</span><span id="sc_reducer-447"><a href="#sc_reducer-447"><span class="linenos">447</span></a>        <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+</span><span id="sc_reducer-448"><a href="#sc_reducer-448"><span class="linenos">448</span></a>            <span class="k">pass</span>
+</span><span id="sc_reducer-449"><a href="#sc_reducer-449"><span class="linenos">449</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="sc_reducer-450"><a href="#sc_reducer-450"><span class="linenos">450</span></a>            <span class="k">if</span> <span class="n">mb_reduced</span><span class="p">:</span>
+</span><span id="sc_reducer-451"><a href="#sc_reducer-451"><span class="linenos">451</span></a>                <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">MB</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="n">mb_reduced</span><span class="o">.</span><span class="n">get</span><span class="p">()))</span>
+</span><span id="sc_reducer-452"><a href="#sc_reducer-452"><span class="linenos">452</span></a>            <span class="k">else</span><span class="p">:</span>
+</span><span id="sc_reducer-453"><a href="#sc_reducer-453"><span class="linenos">453</span></a>                <span class="n">mb_reduced</span> <span class="o">=</span> <span class="n">MB</span><span class="p">(</span><span class="n">end</span><span class="p">)</span>
+</span><span id="sc_reducer-454"><a href="#sc_reducer-454"><span class="linenos">454</span></a>
+</span><span id="sc_reducer-455"><a href="#sc_reducer-455"><span class="linenos">455</span></a>    <span class="k">return</span> <span class="p">(</span><span class="n">mb_reduced</span><span class="p">,</span> <span class="n">it_rest</span><span class="p">)</span>
 </span></pre></div>
 
 
