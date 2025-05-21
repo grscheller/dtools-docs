@@ -1,4 +1,6 @@
-## Developer Tools for Python - PyPI dtools namespace projects
+# Developer Tools for Python
+
+## PyPI dtools namespace projects
 
 Collection of Python packages to aid in general software development.
 These Python developer libraries consist of Python PyPI namespace
