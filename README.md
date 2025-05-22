@@ -22,10 +22,10 @@ still endeavor to remain Pythonic.
 
 #### Detailed Documentation
 
-Detailed pdoc generated documentation for all the
-[Developer Tools PyPI projects](https://grscheller.github.io/dtools-namespace-projects/).
+Detailed pdoc generated [documentation][1] for all the
+[Developer Tools PyPI projects][2].
 
-#### More Information
+#### License Information
 
 This repo itself, as well as all the Developer Tools namespace projects,
 are licensed under the Apache License Version 2.0, January 2004.
@@ -38,6 +38,8 @@ PyPI project or the
 [https://github.com/chermed/dtools](https://github.com/chermed/dtools)
 GitHub repo.
 
+[1]: https://grscheller.github.io/dtools-namespace-projects/
+[2]: https://github.com/grscheller/dtools-namespace-projects/blob/main/README.md
 [11]: https://pypi.org/project/dtools.circular-array/
 [12]: https://pypi.org/project/dtools.containers/
 [13]: https://pypi.org/project/dtools.fp/
