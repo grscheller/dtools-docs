@@ -22,8 +22,7 @@ still endeavor to remain Pythonic.
 
 #### Detailed Documentation
 
-Detailed pdoc generated [documentation][1] for all the
-[Developer Tools PyPI projects][2].
+Detailed pdoc generated [documentation][1] for all [Developer Tools PyPI projects][2].
 
 #### License Information
 
