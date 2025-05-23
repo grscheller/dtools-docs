@@ -2,6 +2,15 @@
 
 PyPI Developer Tools `dtools` namespace projects
 
+### 2025-05-22 - Rebuilt docs for all projects for next PyPI releases
+
+- circular-array 3.15.0
+- containers 1.0.0
+- fp 2.0.0
+- iterables 2.0.0
+- queues 2.0.0
+- splitends 0.29.0
+
 ### 2025-05-20 - Broke out dtools.fp.iterables to its own repo
 
 - dtools.fp.iterables -> dtools.iterables
