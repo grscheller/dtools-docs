@@ -32,10 +32,8 @@ are licensed under the Apache License Version 2.0, January 2004.
 See [CHANGELOG.md](./CHANGELOG.md) for ongoing changes.
 
 This collection is not associated with either the
-[https://pypi.org/project/dtools](https://pypi.org/project/dtools)
-PyPI project or the
-[https://github.com/chermed/dtools](https://github.com/chermed/dtools)
-GitHub repo.
+`https://pypi.org/project/dtools` PyPI project or the
+`https://github.com/chermed/dtools` GitHub repo.
 
 [1]: https://grscheller.github.io/dtools-namespace-projects/
 [2]: https://github.com/grscheller/dtools-namespace-projects/blob/main/README.md
